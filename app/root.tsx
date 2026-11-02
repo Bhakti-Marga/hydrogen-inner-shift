@@ -8,6 +8,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from 'react-router';
+import {BhaktiHubPixel} from '~/components/bhakti-hub-pixel';
 import favicon from '~/assets/brand/favicon.svg';
 import tailwindStyles from '~/styles/tailwind.css?url';
 
@@ -45,6 +46,7 @@ export function Layout({children}: {children?: React.ReactNode}) {
       <body className="bg-abyss text-white antialiased">
         {children}
         <ScrollRestoration nonce={nonce} />
+        <BhaktiHubPixel />
         <Scripts nonce={nonce} />
       </body>
     </html>
