@@ -1,0 +1,93 @@
+#!/usr/bin/env bash
+#
+# commit-msg hook — validates Conventional Commits format.
+#
+# Format: type(scope): description
+#   - type is required (feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert)
+#   - scope is optional
+#   - description must start lowercase, no trailing period
+#   - subject line max 72 chars
+#   - body lines max 108 chars
+#
+# Git-generated merge subjects that start with "Merge " are also allowed.
+
+set -euo pipefail
+
+commit_msg_file="$1"
+
+# Read only the subject line (first non-comment, non-empty line).
+subject=$(sed '/^#/d' "$commit_msg_file" | sed '/^$/d' | head -1)
+
+if [ -z "$subject" ]; then
+  echo "ERROR: empty commit message" >&2
+  exit 1
+fi
+
+# Allow Git-generated merge commit subjects.
+if echo "$subject" | grep -qE '^Merge '; then
+  exit 0
+fi
+
+# Allowed types
+types="feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert"
+
+# Pattern: type(optional-scope): description
+# - type: one of the allowed types
+# - scope: optional, alphanumeric/hyphens/underscores/dots/slashes
+# - description: starts with a space after colon, first char lowercase or digit
+pattern="^(${types})(\([a-zA-Z0-9_./-]+\))?!?: [a-z0-9]"
+
+if ! echo "$subject" | grep -qE "$pattern"; then
+  echo "ERROR: commit message does not follow Conventional Commits format." >&2
+  echo "" >&2
+  echo "  Expected: type(scope): description or a Merge subject" >&2
+  echo "  Got:      $subject" >&2
+  echo "" >&2
+  echo "  Allowed types: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert" >&2
+  echo "  Scope is optional. Description must start lowercase." >&2
+  echo "  Merge commit subjects starting with 'Merge ' are allowed." >&2
+  echo "" >&2
+  echo "  Examples:" >&2
+  echo "    feat: add user authentication" >&2
+  echo "    fix(store): handle null parent_id in area queries" >&2
+  echo "    docs(agents): update layering rules" >&2
+  echo "    Merge branch 'main' into feature" >&2
+  exit 1
+fi
+
+# Check subject line length (max 72 chars).
+if [ ${#subject} -gt 72 ]; then
+  echo "ERROR: subject line is ${#subject} chars (max 72)." >&2
+  echo "  $subject" >&2
+  exit 1
+fi
+
+# Check body line length (max 108 chars). Ignore comments and blank lines.
+line_number=0
+subject_seen=false
+while IFS= read -r line || [ -n "$line" ]; do
+  line_number=$((line_number + 1))
+
+  case "$line" in
+    ""|\#*) continue ;;
+  esac
+
+  # The first non-comment, non-empty line is the already-checked subject.
+  if [ "$subject_seen" = false ]; then
+    subject_seen=true
+    continue
+  fi
+
+  if [ ${#line} -gt 108 ]; then
+    echo "ERROR: body line $line_number is ${#line} chars (max 108)." >&2
+    echo "  $line" >&2
+    exit 1
+  fi
+done < "$commit_msg_file"
+
+# Check for trailing period.
+if echo "$subject" | grep -qE '\.$'; then
+  echo "ERROR: subject line must not end with a period." >&2
+  echo "  $subject" >&2
+  exit 1
+fi

@@ -1,0 +1,13 @@
+node_modules
+.scratch/
+/.cache
+/build
+/dist
+/public/build
+/.mf
+.env
+.shopify
+.react-router
+h2_deploy_log.json
+tsconfig.tsbuildinfo
+.DS_Store

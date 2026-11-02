@@ -1,0 +1,3 @@
+[install]
+# Avoid newly published package versions until they have had time for review.
+minimumReleaseAge = 86400

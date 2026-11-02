@@ -1,0 +1,144 @@
+@import 'tailwindcss';
+
+@source not '../../docs';
+
+@import './fonts.css';
+
+@theme {
+  /* =========================================
+     Colors — Inner Shift palette (sampled from the homepage design)
+     ========================================= */
+  --color-ember: #ff4f37; /* primary CTA / accent */
+  --color-cobalt: #164db2; /* program cards */
+  --color-abyss: #0c182e; /* deep water, page background */
+  --color-mist: #ffffff66; /* muted headline on dark water (white at 40%) */
+
+  /* =========================================
+     Fonts
+     ========================================= */
+  --font-inter:
+    'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, sans-serif;
+  --font-mono:
+    'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    monospace;
+
+  /* Tailwind v4 special token — sets the default body font automatically */
+  --default-font-family: var(--font-inter);
+
+  /* =========================================
+     Type scale (mobile-first; -md tokens apply at md: breakpoint ≥768px)
+     ========================================= */
+
+  /* INNER SHIFT wordmark: Inter 400, 18px, line-height 100%, 40% tracking */
+  --text-wordmark: 18px;
+  --text-wordmark--line-height: 1;
+  --tracking-wordmark: 0.4em;
+
+  /* Uppercase hero headline: Inter 500, 36px on desktop */
+  --text-hero: 28px;
+  --text-hero--line-height: 32px;
+  --text-hero-md: 36px;
+  --text-hero-md--line-height: 42px;
+
+  --text-body: 16px;
+  --text-body--line-height: 24px;
+
+  /* Mono uppercase eyebrow / status labels: IBM Plex Mono 400, 11px, 2.2px */
+  --text-label: 11px;
+  --text-label--line-height: 16px;
+  --tracking-label: 2.2px;
+
+  /* Larger mono label (e.g. the "Work in progress" indicator) */
+  --text-label-lg: 13px;
+  --text-label-lg--line-height: 18px;
+
+  /* =========================================
+     Motion — durations + easings + global defaults
+     ========================================= */
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 600ms;
+  --duration-page: 1200ms;
+
+  --ease-base: ease;
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --default-transition-duration: var(--duration-base);
+  --default-transition-timing-function: var(--ease-base);
+
+  /* =========================================
+     Animations — keyframes exposed as `animate-*` utilities.
+     Always pair with `motion-safe:`.
+     ========================================= */
+  /* Scale-only settle (no opacity) so the hero image is paint-eligible
+     immediately and does not delay Largest Contentful Paint. */
+  --animate-hero-settle: heroSettle 2400ms var(--ease-out-soft) both;
+  --animate-rise-in: riseIn var(--duration-page) var(--ease-out-soft) both;
+  --animate-sink-in: sinkIn 1600ms var(--ease-out-soft) both;
+  --animate-fade-in: fadeIn var(--duration-page) var(--ease-out-soft) both;
+  --animate-progress-sweep: progressSweep 3200ms ease-in-out infinite;
+  --animate-beacon: beacon 2400ms var(--ease-out-soft) infinite;
+}
+
+@keyframes heroSettle {
+  from {
+    transform: scale(1.06);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Reveals top-down, as if the text is sinking below the waterline. */
+@keyframes sinkIn {
+  from {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes progressSweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(250%);
+  }
+}
+
+@keyframes beacon {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-ember) 70%, transparent);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 10px transparent;
+  }
+}
