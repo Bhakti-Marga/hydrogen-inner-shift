@@ -9,7 +9,7 @@ import {
   ScrollRestoration,
 } from 'react-router';
 import {BhaktiHubPixel} from '~/components/bhakti-hub-pixel';
-import favicon from '~/assets/brand/favicon.svg';
+import favicon from '~/assets/brand/favicon.png';
 import tailwindStyles from '~/styles/tailwind.css?url';
 
 /**
@@ -26,7 +26,7 @@ export function links() {
       type: 'font/woff2',
       crossOrigin: 'anonymous',
     },
-    {rel: 'icon', type: 'image/svg+xml', href: favicon},
+    {rel: 'icon', type: 'image/png', href: favicon},
   ];
 }
 
@@ -71,7 +71,7 @@ export function ErrorBoundary() {
 
   return (
     <main className="flex min-h-svh flex-col items-start justify-center gap-4 px-6 xl:px-10">
-      <p className="font-mono text-label uppercase tracking-label text-mist">
+      <p className="text-eyebrow font-medium uppercase text-mist">
         Error {errorStatus}
       </p>
       <h1 className="text-hero uppercase md:text-hero-md">

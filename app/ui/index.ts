@@ -1,3 +1,15 @@
+export {ArrowBadge} from './arrow-badge';
+export {ArrowRightIcon} from './arrow-right-icon';
+export {AvatarPill} from './avatar-pill';
+export {Button} from './button';
+export type {ButtonProps} from './button';
+export {Container} from './container';
+export {CountUp} from './count-up';
+export {Eyebrow} from './eyebrow';
+export {Reveal} from './reveal';
+export {ScrollChevrons} from './scroll-chevrons';
 export {Section} from './section';
 export type {SectionPadding} from './section';
+export {VideoModal} from './video-modal';
+export type {VideoModalVideo} from './video-modal';
 export {Wordmark} from './wordmark';

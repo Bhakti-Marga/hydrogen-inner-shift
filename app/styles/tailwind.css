@@ -9,9 +9,34 @@
      Colors — Inner Shift palette (sampled from the homepage design)
      ========================================= */
   --color-ember: #ff4f37; /* primary CTA / accent */
-  --color-cobalt: #164db2; /* program cards */
-  --color-abyss: #0c182e; /* deep water, page background */
+  --color-ember-deep: #e63f26; /* button hover fill; white text 4.1:1 (ember is 3.3:1) */
+  --color-cobalt: #164db2; /* secondary accent (taster program) */
+  --color-bay: #2e62b8; /* mission eyebrow */
+  --color-pebble: #7e7f81; /* muted labels on white cards */
+  --color-abyss: #0d182d; /* deep water, page background */
+  --color-depth: #0a111e; /* solid end of the flagship photo fade */
+  --color-night: #0b1118; /* neutral dark over the programs hero photo */
+  --color-dusk: #10151c; /* wash behind the day-immersion pill */
   --color-mist: #ffffff66; /* muted headline on dark water (white at 40%) */
+  --color-ink: #14161a; /* body text on light sections */
+  --color-cloud: #eff2f5; /* light section background */
+  --color-frost: #e1e9f6; /* stat cards on white */
+  --color-haze: #86969b1f; /* frosted pill over dark imagery */
+  --color-umber: #341104; /* warm shade over the fireside photo */
+  --color-flint: #757575; /* placeholders and muted copy in the contact form */
+  --color-chalk: #f8f9fa; /* form field fill */
+  --color-fog: #e3e8ef; /* form field border */
+  --color-shale: #cfd3d8; /* unchecked radio ring */
+  --color-soot: #202221; /* charcoal section behind the journey steps */
+  --color-ash: #d9d9d9; /* step-number discs on soot */
+  --color-glacier: #f3f4f8; /* pale field behind the immersion cards */
+  --color-sheet: #eef3f6; /* frosted card over the day-immersion photo */
+  --color-pine: #0e110d; /* green-black over the example-day photo */
+  --color-clay: #8a5a31; /* role label on the about profile */
+
+  /* Frosted panel over photography (about hero, left half and founder cards) */
+  --blur-frost: 17px;
+  --blur-sheet: 13px; /* day-immersion card */
 
   /* =========================================
      Fonts
@@ -19,9 +44,8 @@
   --font-inter:
     'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, sans-serif;
-  --font-mono:
-    'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    monospace;
+  /* Plus and arrow on the about cards. Inter's marks sit off-centre in the disc. */
+  --font-times: 'Times New Roman', Times, serif;
 
   /* Tailwind v4 special token — sets the default body font automatically */
   --default-font-family: var(--font-inter);
@@ -34,24 +58,357 @@
   --text-wordmark: 18px;
   --text-wordmark--line-height: 1;
   --tracking-wordmark: 0.4em;
+  /* Footer wordmark: Inter 600, 11px */
+  --text-wordmark-sm: 11px;
+  --text-wordmark-sm--line-height: 16.5px;
 
-  /* Uppercase hero headline: Inter 500, 36px on desktop */
-  --text-hero: 28px;
-  --text-hero--line-height: 32px;
-  --text-hero-md: 36px;
-  --text-hero-md--line-height: 42px;
+  /* Uppercase hero headline: Inter 500, 32px, 46px on desktop */
+  --text-hero: 32px;
+  --text-hero--line-height: 38px;
+  --text-hero-md: 46px;
+  --text-hero-md--line-height: 56px;
+
+  /* Programs hero headline: Inter 300, 80px on large screens */
+  --text-banner: 32px;
+  --text-banner--line-height: 36px;
+  --text-banner--letter-spacing: -0.9px;
+  --text-banner-md: 56px;
+  --text-banner-md--line-height: 60px;
+  --text-banner-md--letter-spacing: -1.568px;
+  --text-banner-lg: 80px;
+  --text-banner-lg--line-height: 83.2px;
+  --text-banner-lg--letter-spacing: -2.24px;
+
+  /* Paragraph under that headline: Inter 300, 17.5px */
+  --text-banner-lead: 16px;
+  --text-banner-lead--line-height: 26px;
+  --text-banner-lead-md: 17.5px;
+  --text-banner-lead-md--line-height: 28.35px;
 
   --text-body: 16px;
   --text-body--line-height: 24px;
 
-  /* Mono uppercase eyebrow / status labels: IBM Plex Mono 400, 11px, 2.2px */
-  --text-label: 11px;
-  --text-label--line-height: 16px;
-  --tracking-label: 2.2px;
+  /* Longer body copy (hero intro, section leads) */
+  --text-body-lg: 16px;
+  --text-body-lg--line-height: 26px;
+  /* Hero intro on small screens: same size, tighter leading */
+  --text-hero-intro: 16px;
+  --text-hero-intro--line-height: 19px;
 
-  /* Larger mono label (e.g. the "Work in progress" indicator) */
-  --text-label-lg: 13px;
-  --text-label-lg--line-height: 18px;
+  /* Uppercase eyebrow labels: Inter 500, 11px, 1.87px tracking */
+  --text-eyebrow: 11px;
+  --text-eyebrow--line-height: 16.5px;
+  --text-eyebrow--letter-spacing: 1.87px;
+
+  /* Card titles: Inter 600, 18px, -0.78px tracking */
+  --text-card-title: 18px;
+  --text-card-title--line-height: 1.4;
+  --text-card-title--letter-spacing: -0.78px;
+  /* Bold line of a hero program card on small screens */
+  --text-card-lead: 24px;
+  --text-card-lead--line-height: 1.4;
+  --text-card-lead--letter-spacing: -0.78px;
+
+  /* “Who am I being?”: Inter 500, 48px, tight tracking */
+  --text-being: 32px;
+  --text-being--line-height: 1.15;
+  --text-being--letter-spacing: -1.4px;
+  --text-being-md: 48px;
+  --text-being-md--line-height: 1.08;
+  --text-being-md--letter-spacing: -3.024px;
+
+  /* The line under that question: Inter 300, 22px */
+  --text-water: 18px;
+  --text-water--line-height: 1.4;
+  --text-water--letter-spacing: -0.4px;
+  --text-water-md: 22px;
+  --text-water-md--line-height: 1.4;
+  --text-water-md--letter-spacing: -0.78px;
+
+  /* Mission section headings: Inter 300, 50px */
+  --text-sources: 32px;
+  --text-sources--line-height: 1.12;
+  --text-sources--letter-spacing: -0.8px;
+  --text-sources-md: 50px;
+  --text-sources-md--line-height: 52.5px;
+  --text-sources-md--letter-spacing: -1.4px;
+
+  /* Blue approach card: Inter 600, 24px */
+  --text-approach: 20px;
+  --text-approach--line-height: 1.4;
+  --text-approach--letter-spacing: -0.5px;
+  --text-approach-md: 24px;
+  --text-approach-md--line-height: 1.4;
+  --text-approach-md--letter-spacing: -0.78px;
+
+  /* Mobile menu card title: Inter 500, 21px */
+  --text-menu-title: 21px;
+  --text-menu-title--line-height: 25px;
+  --text-menu-title--letter-spacing: -0.42px;
+  /* Index beside that title: Inter 500, 11px */
+  --text-menu-index: 11px;
+  --text-menu-index--line-height: 14px;
+  --text-menu-index--letter-spacing: 1.54px;
+  /* Frosted chips on the programmes card: Inter 500, 11.5px */
+  --text-menu-chip: 11.5px;
+  --text-menu-chip--line-height: 14px;
+
+  /* Lines set inside the mission photo tiles: Inter 400 or 600, 21px on desktop */
+  --text-mosaic: 16px;
+  --text-mosaic--line-height: 1.4;
+  --text-mosaic--letter-spacing: -0.5px;
+  --text-mosaic-lg: 21px;
+  --text-mosaic-lg--line-height: 1.4;
+  --text-mosaic-lg--letter-spacing: -0.78px;
+
+  /* Card body (Inter 300) and fact rows (Inter 500) */
+  --text-card-body: 13.5px;
+  --text-card-body--line-height: 21.33px;
+  --text-card-meta: 12.5px;
+  --text-card-meta--line-height: 18.75px;
+
+  /* Large section statement: Inter 400/300, 40px on desktop */
+  --text-statement: 26px;
+  --text-statement--line-height: 1.4;
+  --text-statement--letter-spacing: -0.5px;
+  --text-statement-md: 40px;
+  --text-statement-md--line-height: 1.4;
+  --text-statement-md--letter-spacing: -0.78px;
+
+  /* Sentence under that light headline: Inter 400, 14px */
+  --text-support: 14px;
+  --text-support--line-height: 22.4px;
+
+  /* Single line under a name on a frosted card: Inter 300, 14px */
+  --text-detail: 14px;
+  --text-detail--line-height: 16px;
+  --text-detail--letter-spacing: 0.3px;
+
+  /* Uppercase role under a name: Inter 400, 12px */
+  --text-role: 12px;
+  --text-role--line-height: 16.8px;
+  --text-role--letter-spacing: 0.63px;
+
+  /* Quote on the hillside stack: Inter 400, 13px. Cite under it: Inter 400, 10px */
+  --text-whisper: 13px;
+  --text-whisper--line-height: 20.8px;
+  --text-cite: 10px;
+  --text-cite--line-height: 16px;
+  --text-cite--letter-spacing: 0.2px;
+
+  /* Pull quote (Inter 400) and its italic aside / closing lines */
+  --text-quote: 24px;
+  --text-quote--line-height: 32px;
+  --text-quote--letter-spacing: -0.36px;
+  --text-quote-md: 32px;
+  --text-quote-md--line-height: 42.88px;
+  --text-quote-md--letter-spacing: -0.48px;
+  --text-aside: 18px;
+  --text-aside--line-height: 27.2px;
+  --text-closing: 19px;
+  --text-closing--line-height: 28.5px;
+
+  /* Stat figures (Inter 300, 84px on desktop), their copy and source labels */
+  --text-stat: 64px;
+  --text-stat--line-height: 68px;
+  --text-stat--letter-spacing: -1.3px;
+  --text-stat-md: 84px;
+  --text-stat-md--line-height: 87px;
+  --text-stat-md--letter-spacing: -1.74px;
+  --text-stat-body: 15px;
+  --text-stat-body--line-height: 24px;
+  --text-source: 10.5px;
+  --text-source--line-height: 15.75px;
+  --text-source--letter-spacing: 1.47px;
+  --text-caption: 13.5px;
+  --text-caption--line-height: 20.25px;
+
+  /* Testimonial quote (Inter 300, 33px on desktop) and its attribution */
+  --text-testimonial: 24px;
+  --text-testimonial--line-height: 40px;
+  --text-testimonial--letter-spacing: -0.66px;
+  --text-testimonial-md: 33px;
+  --text-testimonial-md--line-height: 46.86px;
+  --text-testimonial-md--letter-spacing: -0.66px;
+  --text-attribution: 14.5px;
+  --text-attribution--line-height: 21.75px;
+
+  /* Section titles: Inter 300, 56px on desktop ("Who it is for", "Our programs") */
+  --text-display: 38px;
+  --text-display--line-height: 42px;
+  --text-display--letter-spacing: -1px;
+  --text-display-md: 56px;
+  --text-display-md--line-height: 58.24px;
+  --text-display-md--letter-spacing: -1.568px;
+
+  /* Section intro paragraph: Inter 300/600, 26px ("Why nature?") */
+  --text-intro: 21px;
+  --text-intro--line-height: 31px;
+  --text-intro-md: 26px;
+  --text-intro-md--line-height: 37.7px;
+
+  /* White card headings (Inter 600) and numbered list rows */
+  --text-card-heading: 25px;
+  --text-card-heading--line-height: 37.5px;
+  --text-card-heading--letter-spacing: -0.5px;
+  --text-list: 16.5px;
+  --text-list--line-height: 24.75px;
+
+  /* Small print: list numbers, footer links (13px) */
+  --text-fine: 13px;
+  --text-fine--line-height: 19.5px;
+
+  /* Side headings beside media and lists: Inter 300, 44px (people) / 48px (FAQ) */
+  --text-headline: 32px;
+  --text-headline--line-height: 36px;
+  --text-headline--letter-spacing: -0.9px;
+  --text-headline-md: 44px;
+  --text-headline-md--line-height: 46.2px;
+  --text-headline-md--letter-spacing: -1.232px;
+  --text-headline-lg: 48px;
+  --text-headline-lg--line-height: 52px;
+  --text-headline-lg--letter-spacing: -1.344px;
+
+  /* Closing call to action: Inter 300, 58px on desktop */
+  --text-display-lg: 58px;
+  --text-display-lg--line-height: 60.9px;
+  --text-display-lg--letter-spacing: -1.624px;
+
+  /* FAQ question (Inter 500), answer (Inter 300) and the +/– toggle */
+  --text-question: 17px;
+  --text-question--line-height: 25.5px;
+  --text-question-md: 18.5px;
+  --text-question-md--line-height: 27.75px;
+  --text-question-md--letter-spacing: -0.185px;
+  --text-answer: 15.5px;
+  --text-answer--line-height: 26.04px;
+
+  /* Program cards: title (Inter 300/500, 36px flagship, 33px taster) and body */
+  --text-program: 28px;
+  --text-program--line-height: 32px;
+  --text-program--letter-spacing: -0.56px;
+  --text-program-md: 36px;
+  --text-program-md--line-height: 40.32px;
+  --text-program-md--letter-spacing: -0.72px;
+  --text-program-compact-md: 33px;
+  --text-program-compact-md--line-height: 37.62px;
+  --text-program-compact-md--letter-spacing: -0.66px;
+  --text-program-body: 15.5px;
+  --text-program-body--line-height: 25.73px;
+  --text-link: 15px;
+  --text-link--line-height: 22.5px;
+
+  /* Journey step titles: Inter 500, 22px */
+  --text-step: 20px;
+  --text-step--line-height: 28px;
+  --text-step--letter-spacing: -0.2px;
+  --text-step-md: 22px;
+  --text-step-md--line-height: 33px;
+  --text-step-md--letter-spacing: -0.22px;
+
+  /* Immersion card titles: Inter 500, 31px */
+  --text-layer: 26px;
+  --text-layer--line-height: 32px;
+  --text-layer--letter-spacing: -0.52px;
+  --text-layer-md: 31px;
+  --text-layer-md--line-height: 46.5px;
+  --text-layer-md--letter-spacing: -0.62px;
+
+  /* Example-day panel headline: Inter 300, 51.8px */
+  --text-panel: 32px;
+  --text-panel--line-height: 36px;
+  --text-panel--letter-spacing: -0.9px;
+  --text-panel-md: 51.8px;
+  --text-panel-md--line-height: 53.91px;
+  --text-panel-md--letter-spacing: -1.452px;
+
+  /* Centered quote under the immersion cards: Inter 400 italic, 18.5px */
+  --text-pull: 18.5px;
+  --text-pull--line-height: 29.6px;
+
+  /* Example-day schedule lines: Inter 400, 14.5px */
+  --text-note: 14.5px;
+  --text-note--line-height: 23.49px;
+
+  /* Participant feedback card: Inter 400 italic, 20.5px */
+  --text-feedback: 20.5px;
+  --text-feedback--line-height: 31.98px;
+  --text-feedback--letter-spacing: -0.205px;
+
+  /* Belief statement above the photo row: Inter 400, 32px.
+     Also the closing line on the programs page. */
+  --text-belief: 32px;
+  --text-belief--line-height: 1.4;
+  --text-belief--letter-spacing: -0.78px;
+
+  /* Day-immersion card title: Inter 500, then Inter 300 on the second line */
+  --text-taster: 26px;
+  --text-taster--line-height: 32px;
+  --text-taster--letter-spacing: -0.52px;
+  --text-taster-md: 34px;
+  --text-taster-md--line-height: 40.8px;
+  --text-taster-md--letter-spacing: -0.68px;
+
+  /* Underlined download link under the closing button: Inter 500, 18px */
+  --text-overview: 18px;
+  --text-overview--line-height: 1.4;
+
+  /* Small pill labels (Inter 500, 14px) and the ▶ glyph beside them */
+  --text-pill: 14px;
+  --text-pill--line-height: 16.5px;
+  --text-glyph: 10px;
+  --text-glyph--line-height: 15px;
+
+  /* Contact form: card title (Inter 500), lead, field labels (Inter 500) and field text */
+  --text-form-title: 23px;
+  --text-form-title--line-height: 25.76px;
+  --text-form-title--letter-spacing: -0.23px;
+  --text-form-lead: 14px;
+  --text-form-lead--line-height: 22.4px;
+  --text-label: 13px;
+  --text-label--line-height: 20.8px;
+  --text-label--letter-spacing: 0.78px;
+  --text-field: 15px;
+  --text-field--line-height: 19px;
+
+  /* =========================================
+     Radii
+     ========================================= */
+  --radius-tile: 16px; /* immersion cards */
+  --radius-sheet: 22px; /* frosted card over the day-immersion photo */
+  --radius-media: 20px; /* video player frame */
+  --radius-panel: 24px; /* full-width closing panel */
+  --radius-card: 10px; /* contact form card */
+  --radius-field: 12px; /* form inputs and option cards */
+  --radius-menu: 18px; /* mobile menu photo cards */
+
+  /* =========================================
+     Shadows
+     ========================================= */
+  --shadow-float: 0 18px 44px rgb(8 14 22 / 0.3); /* play button over media */
+  --shadow-lift: 0 28px 35px rgb(13 19 27 / 0.18); /* feedback card over the day panel */
+  --shadow-sheet: 0 30px 70px rgb(13 19 27 / 0.18); /* frosted card over the day-immersion photo */
+  --shadow-card: 0 4px 4px rgb(0 0 0 / 0.25); /* quote card on the about hillside */
+
+  /* =========================================
+     Layout
+     ========================================= */
+  /* Content column: 1320px, i.e. 60px margins at the 1440px design width */
+  --container-content: 1320px;
+  /* Narrow column: 1264px, i.e. 88px margins at the 1440px design width */
+  --container-narrow: 1264px;
+
+  /* Mobile menu photo cards: programmes card, then the shorter rows */
+  --spacing-menu-feature: 187.6px;
+  --spacing-menu-card: 129.5px;
+
+  /* "Why nature?" photo strip: closed panel, open panel and gap */
+  --spacing-strip-closed: 56px;
+  --spacing-strip-closed-md: 155px;
+  --spacing-strip-open-md: 608px;
+  --spacing-strip-gap: 9px;
+  --spacing-strip-height: 440px;
+  --spacing-strip-height-md: 612px;
 
   /* =========================================
      Motion — durations + easings + global defaults
@@ -60,6 +417,10 @@
   --duration-base: 300ms;
   --duration-slow: 600ms;
   --duration-page: 1200ms;
+  --duration-count: 1800ms;
+  --duration-reveal: 900ms;
+  /* Delay between items revealed together (see `<Reveal order>`). */
+  --duration-stagger: 100ms;
 
   --ease-base: ease;
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
@@ -71,22 +432,167 @@
      Animations — keyframes exposed as `animate-*` utilities.
      Always pair with `motion-safe:`.
      ========================================= */
-  /* Scale-only settle (no opacity) so the hero image is paint-eligible
-     immediately and does not delay Largest Contentful Paint. */
-  --animate-hero-settle: heroSettle 2400ms var(--ease-out-soft) both;
   --animate-rise-in: riseIn var(--duration-page) var(--ease-out-soft) both;
-  --animate-sink-in: sinkIn 1600ms var(--ease-out-soft) both;
   --animate-fade-in: fadeIn var(--duration-page) var(--ease-out-soft) both;
-  --animate-progress-sweep: progressSweep 3200ms ease-in-out infinite;
-  --animate-beacon: beacon 2400ms var(--ease-out-soft) infinite;
+  --animate-count-up: countUp var(--duration-count) var(--ease-out-soft) both;
+  /* Scroll reveals fill `backwards` only, so no transform (and no stacking
+     context) lingers on the element once it has landed. */
+  --animate-reveal: riseIn var(--duration-reveal) var(--ease-out-soft) backwards;
+  --animate-settle: settle var(--duration-page) var(--ease-out-soft) backwards;
+  /* Avatar pill opening from its avatar circle; text follows. Delays add the
+     surrounding `<Reveal order>` stagger. */
+  --animate-pill-open: pillOpen var(--duration-reveal) var(--ease-out-soft)
+    calc(
+      var(--reveal-order, 0) * var(--duration-stagger) + var(--duration-base)
+    )
+    backwards;
+  --animate-pill-text: fadeIn var(--duration-slow) var(--ease-out-soft)
+    calc(
+      var(--reveal-order, 0) * var(--duration-stagger) + var(--duration-slow)
+    )
+    backwards;
 }
 
-@keyframes heroSettle {
-  from {
-    transform: scale(1.06);
+/* Integer counter animated from 0 to `--count-to` (see `<CountUp />`). The
+   registered type lets the browser interpolate it; `counter()` prints it. */
+@property --count {
+  syntax: '<integer>';
+  initial-value: 0;
+  inherits: false;
+}
+
+@utility count-up {
+  --count: var(--count-to);
+  counter-reset: count var(--count);
+
+  &::after {
+    content: counter(count);
   }
-  to {
-    transform: scale(1);
+}
+
+/* Text that brightens as it scrolls up the viewport, tied to scroll position
+   (put it on each word so lines light up in reading order). Browsers without
+   scroll-driven animations, and reduced-motion visitors, see the final text. */
+@utility scroll-brighten {
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      /* Inline boxes share one view timeline per element; inline-block
+         gives each word its own. */
+      display: inline-block;
+      animation: brighten linear both;
+      animation-timeline: view();
+      animation-range: cover 10% cover 40%;
+    }
+  }
+}
+
+/* Hover fill that rises from the bottom edge with a curved, water-line top.
+   Needs `relative isolate overflow-hidden` on the element and a
+   `before:bg-*` colour. The layer is taller than the element so, once risen
+   (top at -45%), the curve clears the top edge and the bottom still covers. */
+@utility fill-rise {
+  &::before {
+    content: '';
+    position: absolute;
+    inset-inline: -10%;
+    top: 0;
+    z-index: -1;
+    height: 150%;
+    border-radius: 50% 50% 0 0 / 30% 30% 0 0;
+    translate: 0 75%;
+    transition: translate var(--duration-base) var(--ease-out-soft);
+  }
+
+  &:focus-visible::before {
+    translate: 0 -30%;
+  }
+
+  @media (hover: hover) {
+    &:hover::before {
+      translate: 0 -30%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &::before {
+      transition: none;
+    }
+  }
+}
+
+/* Fanned portrait row (see `WhyLeverSection`). Needs an `@container` ancestor.
+   Below the width where the sixth card's leaned corners would be sliced flat,
+   the row scales down so those corners stay inside the clip. It never shrinks
+   past 0.85, so a phone still shows large cards with the outer ones bleeding
+   off. 1106px is twice the distance from the row centre to that corner:
+   seven 196px cards, 14px gaps, a 7° lean. */
+@utility fan-fit {
+  transform: scale(clamp(0.85, (100cqw - 2rem) / 1106px, 1));
+  transform-origin: center;
+}
+
+/* Photo strip with one open panel (see `HomeNatureSection`). Needs an
+   `@container` ancestor plus `--strip-index` and `--strip-count`. Translates
+   the track so the open panel sits centred, clamped at both ends; children
+   size themselves with `--strip-closed` / `--strip-open`. */
+@utility strip-track {
+  --strip-closed: var(--spacing-strip-closed);
+  --strip-step: calc(var(--strip-closed) + var(--spacing-strip-gap));
+  --strip-open: min(
+    var(--spacing-strip-open-md),
+    100cqw - 2 * var(--strip-step)
+  );
+  display: flex;
+  gap: var(--spacing-strip-gap);
+  translate: calc(
+      -1 *
+        clamp(
+          0px,
+          var(--strip-index) * var(--strip-step) + var(--strip-open) / 2 - 50cqw,
+          (var(--strip-count) - 1) * var(--strip-step) + var(--strip-open) -
+            100cqw
+        )
+    )
+    0;
+
+  @variant md {
+    --strip-closed: var(--spacing-strip-closed-md);
+  }
+}
+
+@layer base {
+  /* Tailwind v4 preflight resets buttons to the default cursor. */
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+
+  /* Lock page scroll behind any open modal dialog. */
+  html:has(dialog[open]:modal) {
+    overflow: hidden;
+  }
+
+  /* Beat the user-agent `dialog:modal` box (fit-content, centred, bordered). */
+  dialog.menu-panel {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100dvh;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    background: var(--color-abyss);
+  }
+
+  dialog.menu-panel nav {
+    scrollbar-width: none;
+  }
+
+  dialog.menu-panel nav::-webkit-scrollbar {
+    display: none;
   }
 }
 
@@ -101,17 +607,12 @@
   }
 }
 
-/* Reveals top-down, as if the text is sinking below the waterline. */
-@keyframes sinkIn {
+@keyframes countUp {
   from {
-    opacity: 0;
-    clip-path: inset(0 0 100% 0);
-    transform: translateY(-8px);
+    --count: 0;
   }
   to {
-    opacity: 1;
-    clip-path: inset(0 0 0 0);
-    transform: translateY(0);
+    --count: var(--count-to);
   }
 }
 
@@ -124,21 +625,33 @@
   }
 }
 
-@keyframes progressSweep {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(250%);
+/* Uses `transform`, not `scale`, so it composes with `hover:scale-*`. */
+@keyframes settle {
+  from {
+    transform: scale(1.06);
   }
 }
 
-@keyframes beacon {
-  0% {
-    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-ember) 70%, transparent);
+/* Desktop mission mosaic. Hidden below the md breakpoint; the phone mosaic
+   takes over there. */
+@media (max-width: 767px) {
+  .mission-desktop {
+    display: none;
   }
-  70%,
-  100% {
-    box-shadow: 0 0 0 10px transparent;
+}
+
+/* Needs `--pill-closed` (the pill height) on the element. */
+@keyframes pillOpen {
+  from {
+    clip-path: inset(0 calc(100% - var(--pill-closed)) 0 0 round 9999px);
+  }
+  to {
+    clip-path: inset(0 round 9999px);
+  }
+}
+
+@keyframes brighten {
+  from {
+    opacity: 0.25;
   }
 }
