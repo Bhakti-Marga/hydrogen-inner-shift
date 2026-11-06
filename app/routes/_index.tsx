@@ -14,7 +14,6 @@ import {HomeStatementSection} from '~/sections/home-statement-section';
 import {HomeStatsSection} from '~/sections/home-stats-section';
 import {HomeTestimonialsSection} from '~/sections/home-testimonials-section';
 import {SiteFooterSection} from '~/sections/site-footer-section';
-
 const TITLE = 'Inner Shift — Shaping the future of work from the inside out';
 const DESCRIPTION =
   'Help leaders and teams unlock their full potential by working on the human gap that skills training never reaches.';
@@ -22,12 +21,12 @@ const DESCRIPTION =
 const POSTER = '/images/pages/home/hero-founders.jpg';
 
 const TESTIMONIALS = [
-  {name: 'Josh', slug: 'josh'},
-  {name: 'Shweta', slug: 'shweta'},
-  {name: 'Gosha', slug: 'gosha'},
-  {name: 'Francesco', slug: 'francesco'},
-  {name: 'Christian', slug: 'christian'},
-  {name: 'Tommaso', slug: 'tommaso'},
+  {name: 'Yash Pankhania', slug: 'josh'},
+  {name: 'Shraddha Lallbahdoor', slug: 'shweta'},
+  {name: 'Gosia Reis', slug: 'gosha'},
+  {name: 'Francesco Cecchni', slug: 'francesco'},
+  {name: 'Christian Jaerschke', slug: 'christian'},
+  {name: 'Tommaso Caini', slug: 'tommaso'},
 ];
 
 const PILL_AVATAR = {src: '/images/pages/home/hero-pill-avatar.jpg'};

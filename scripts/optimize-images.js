@@ -128,12 +128,13 @@ const RESIZE_RULES = [
   },
   // Small portrait on the profile panel: about 125×134.
   {
-    pattern: /^ratna-portrait\.jpe?g$/,
+    pattern: /^(ratna|avish)-portrait\.jpe?g$/,
     maxWidth: 400,
     maxHeight: 600,
     quality: 90,
   },
-  // Large portrait beside that panel: about 680×663.
+  // Large portrait filling a profile column: about 680×852.
+  // `ratna.jpg` and `avish.jpg` are covered by the founder-portrait rule.
   {
     pattern: /^ratna-sofa\.jpe?g$/,
     maxWidth: 1400,
@@ -255,7 +256,7 @@ const RESIZE_RULES = [
   },
   // Mobile menu cards: 350×188 (programmes) and 350×130 (the rest).
   {
-    pattern: /^menu-(programmes|results|why|mission)\.jpe?g$/,
+    pattern: /^menu-(programmes|results|why|mission|about)\.jpe?g$/,
     maxWidth: 700,
     maxHeight: 376,
     quality: 90,

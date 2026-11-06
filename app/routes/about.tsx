@@ -10,7 +10,6 @@ import {AboutProfileSection} from '~/sections/about-profile-section';
 import {AboutQuotesSection} from '~/sections/about-quotes-section';
 import {AboutTogetherSection} from '~/sections/about-together-section';
 import {SiteFooterSection} from '~/sections/site-footer-section';
-
 const TITLE = 'About us — Inner Shift';
 const DESCRIPTION =
   'Meet the two founders who built Inner Shift for the part of leadership you cannot see from the outside.';
@@ -61,7 +60,7 @@ export default function About() {
           },
           {
             name: 'Avish Lallbahadoor',
-            detail: 'Culture change · 5 regions · chemical industry',
+            detail: 'Leadership transformation & nature based development',
             avatar: {
               src: '/images/pages/about/hero-avish.jpg',
               width: 160,
@@ -71,23 +70,53 @@ export default function About() {
         ]}
       />
       <AboutProfileSection
-        portrait={{
-          src: '/images/pages/about/ratna-portrait.jpg',
-          alt: '',
-          width: 400,
-          height: 600,
-        }}
-        photo={{
-          src: '/images/pages/about/ratna-sofa.jpg',
-          alt: 'Ratna Morjaria seated on a sofa in a green dress, holding a notebook',
-          width: 783,
-          height: 769,
-        }}
-        name="Ratna Morjaria"
-        label="Transformation & Leadership Consultant"
-        paragraphs={[
-          "Ratna spent her career on the operational and compliance side of the chemical industry — safety, environmental standards, culture change, the systems that keep a large organisation running without anyone noticing they're there. As Global Culture Director, she led culture transformation across five regions. She's a Certified Culture Design Consultant.",
-          "As founder of Dharma Awakenings, she's since brought that approach to clients across a range of industries — helping organisations strengthen the human foundation everything else, technology included, depends on. Her approach connects strategy, culture, and human potential, bringing the architecture that helps a team navigate real operational pressure, not just a workshop.",
+        people={[
+          {
+            portrait: {
+              src: '/images/pages/about/ratna-portrait.jpg',
+              alt: '',
+              width: 400,
+              height: 600,
+            },
+            photo: {
+              src: '/images/pages/about/ratna.jpg',
+              alt: 'Ratna Morjaria in a navy outfit, smiling',
+              width: 853,
+              height: 1280,
+              objectPosition: 'center 28%',
+            },
+            name: 'Ratna Morjaria',
+            labels: ['Transformation & leadership consultant'],
+            paragraphs: [
+              "Ratna spent her career on the operational and compliance side of the chemical industry — safety, environmental standards, culture change, the systems that keep a large organisation running without anyone noticing they're there. As Global Culture Director, she led culture transformation across five regions. She's a Certified Culture Design Consultant.",
+              "As founder of Dharma Awakenings, she's since brought that approach to clients across a range of industries — helping organisations strengthen the human foundation everything else, technology included, depends on. Her approach connects strategy, culture, and human potential, bringing the architecture that helps a team navigate real operational pressure, not just a workshop.",
+            ],
+          },
+          {
+            portrait: {
+              src: '/images/pages/about/avish-portrait.jpg',
+              alt: '',
+              width: 400,
+              height: 600,
+              objectPosition: 'center 22%',
+            },
+            photo: {
+              src: '/images/pages/about/avish.jpg',
+              alt: 'Avish Lallbahadoor sitting on steps, looking aside',
+              width: 1400,
+              height: 1400,
+              objectPosition: '62% 22%',
+            },
+            name: 'Avish Lallbahadoor',
+            labels: ['Founder, Leadership transformation & nature based development'],
+            quote:
+              '“In the quiet intensity of the wild, we discover what we’re truly capable of—and bring that resilience back into every aspect of life.”',
+            paragraphs: [
+              'With a background in investment and risk analysis in the banking world, Avish translates his analytical perspective into transformative leadership facilitation. Facilitator and seasoned wilderness guide, he bridges the gap between high-stakes strategic thinking and the raw, grounding lessons of the natural environment — helping people challenge assumptions, shift perspectives and unlock their potential.',
+              'Driven by a deep curiosity and a drive to push his boundaries, he has led solo expeditions and long-distance trails across three continents, often navigating challenging conditions and extremes of weather. He uses nature as the ultimate mirror, helping corporate leaders build resilience, adaptability, and emotional intelligence under pressure. His approach combines curiosity, reflection and purposeful challenge — creating space for people to test their assumptions, discover new perspectives and expand what they believe is possible.',
+              'Beyond his work, he spends his free time traveling, picking up new outdoor skills, and sharing his love for nature with his wife.',
+            ],
+          },
         ]}
       />
       <AboutQuotesSection
@@ -95,39 +124,52 @@ export default function About() {
         image={{src: '/images/pages/about/hillside.jpg', width: 2791, height: 1600}}
         quotes={[
           {
-            id: 'ghost-top',
-            tone: 'ghost',
+            id: 'hitesh-jogia',
             quote:
-              "An incredible understanding of the factors that drive human behaviour — pragmatic solutions that make a real difference in the organisations she's worked with.",
-            cite: 'Katja Kelm, Senior Energy Manager (ISO 50001)',
+              'Avish was incredibly supportive throughout the transformation process and created a safe and encouraging space for meaningful conversations.',
+            cite: 'Hitesh Jogia, Senior Chartered Financial Planner, UK',
           },
           {
-            id: 'since-2018',
-            tone: 'glass',
+            id: 'shraddha-oril',
             quote:
-              "Since 2018, we've built and facilitated culture change projects together at plants across the US, Singapore, Germany, and Belgium.",
-            cite: 'Katja Kelm, Senior Energy Manager (ISO 50001)',
+              'A special thank you to Avish for creating such a safe, warm, and genuine space throughout the programme. I truly appreciated the support, openness, and the way he guided us through the experience. Thank you for such a meaningful and transformative journey.',
+            cite: 'Shraddha Oril, Expert Accountant, Luxembourg',
           },
           {
-            id: 'psychological-safety',
-            tone: 'solid',
+            id: 'eliel-moura',
             quote:
-              'Ratna creates psychological safety where people can question their identity and beliefs without judgment — the inner work that changes everything.',
-            cite: 'Katja Kelm, Senior Energy Manager (ISO 50001)',
+              'Ratna is that kind of person that makes you change the way you use to do things as professional. She makes you believe in something bigger than the normal life, and rethink your purpose of life.',
+            cite: 'Eliel Moura, Quality & HSE Manager LATAM, Syensqo, Brazil',
           },
           {
-            id: 'understanding',
-            tone: 'dim',
+            id: 'daran-janecrk',
             quote:
-              "An incredible understanding of the factors that drive human behaviour — pragmatic solutions that make a real difference in the organisations she's worked with.",
-            cite: 'Katja Kelm, Senior Energy Manager (ISO 50001)',
+              'What I really appreciate about her skills is how she motivates, influences and challenges the status quo. She is able to successfully navigate within the system and add value to the business and achieve the targets.',
+            cite: 'Daran Janecrk, Global EHS Director, Kindeva Drug Delivery',
           },
           {
-            id: 'ghost-bottom',
-            tone: 'ghost',
+            id: 'fabian-leuzinger',
             quote:
-              "An incredible understanding of the factors that drive human behaviour — pragmatic solutions that make a real difference in the organisations she's worked with.",
-            cite: 'Katja Kelm, Senior Energy Manager (ISO 50001)',
+              'Ratna brings across in a light hearted way very serious and important matters. She “weaves” together all the important points, connecting the dots like an artist. She makes people feel at ease and makes them open up more than they ever have.',
+            cite: 'Fabian Leuzinger, Steering Board Member',
+          },
+          {
+            id: 'roberto-arraya',
+            quote:
+              'Ratna is as exemplary as it gets. Simply put, she just gets it. She understands people. She understands a need for change. She understands company culture and effortlessly relates it to Leadership Performance.',
+            cite: 'Roberto Arraya, Senior Systems Engineer, Emerson, Germany',
+          },
+          {
+            id: 'kelly-lanz',
+            quote:
+              'She sees people not for who they are, but for who they can become, and is always ready and willing for the next challenge that comes her way. She has the ability to engage all types of people, and create meaningful links that generate group cohesiveness.',
+            cite: 'Kelly Lanz, Founder, The Lanz Connection',
+          },
+          {
+            id: 'yash-pankania',
+            quote:
+              'The quality of the facilitation and delivery was incredible. Each module was thoughtfully structured, taking us on a journey rather than simply delivering information. Avish constantly engaged us, asked questions and encouraged us to reflect, so we always felt involved rather than being spoken at.',
+            cite: 'Yash Pankania, IBM Sales Specialist',
           },
         ]}
       />

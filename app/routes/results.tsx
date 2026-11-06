@@ -7,7 +7,6 @@ import {ResultsCloseSection} from '~/sections/results-close-section';
 import {ResultsHeroSection} from '~/sections/results-hero-section';
 import {ResultsTestimonialsSection} from '~/sections/results-testimonials-section';
 import {SiteFooterSection} from '~/sections/site-footer-section';
-
 const TITLE = 'Results — Inner Shift';
 const DESCRIPTION =
   'Leaders say what changed, in their own words. Every clip was filmed on the final day of the journey.';
@@ -34,49 +33,49 @@ const PILL_AVATAR = {src: '/images/pages/home/hero-pill-avatar.jpg'};
 const TESTIMONIALS = [
   {
     slug: 'francesco',
-    name: 'Francesco',
+    name: 'Francesco Cecchni',
     quote:
       '“You are a good leader if you are a good human being.”',
-    attribution: 'Francesco Cecchini · Company owner, Italy',
+    attribution: 'Francesco Cecchni · Company owner, Italy',
     duration: '0:47',
   },
   {
     slug: 'tommaso',
-    name: 'Tommaso',
+    name: 'Tommaso Caini',
     quote:
       '“I would recommend this experience to everyone — first of all, to myself.”',
-    attribution: 'Tommaso · Startup co-founder, Italy',
+    attribution: 'Tommaso Caini · Startup co-founder, Italy',
     duration: '0:42',
   },
   {
     slug: 'christian',
-    name: 'Christian',
+    name: 'Christian Jaerschke',
     quote:
       '“You have to face what is below the waterline. That is what makes the change.”',
-    attribution: 'Christian Jaschke · High-performance coach, Germany',
+    attribution: 'Christian Jaerschke · High-performance coach, Germany',
     duration: '1:04',
   },
   {
     slug: 'gosha',
-    name: 'Gosha',
+    name: 'Gosia Reis',
     quote: '“Below the surface is where the real me begins.”',
-    attribution: 'Gosha · Organisation development expert',
+    attribution: 'Gosia Reis · Organisation development expert',
     duration: '1:03',
   },
   {
     slug: 'josh',
-    name: 'Josh',
+    name: 'Yash Pankhania',
     quote:
       '“From someone who was very sceptical coming in — give it a shot.”',
-    attribution: 'Josh · Tech sales, London',
+    attribution: 'Yash Pankhania · Tech sales, London',
     duration: '0:47',
   },
   {
     slug: 'shweta',
-    name: 'Shweta',
+    name: 'Shraddha Lallbahdoor',
     quote:
       '“I thought I could do everything on my own. The group changes everything.”',
-    attribution: 'Shweta Uriel · Adviser to senior leadership, Luxembourg',
+    attribution: 'Shraddha Lallbahdoor · Adviser to senior leadership, Luxembourg',
     duration: '0:56',
   },
 ];
