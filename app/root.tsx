@@ -1,4 +1,5 @@
 import {useNonce} from '@shopify/hydrogen';
+import {useEffect} from 'react';
 import {
   Outlet,
   useRouteError,
@@ -35,7 +36,7 @@ export function Layout({children}: {children?: React.ReactNode}) {
   const nonce = useNonce();
 
   return (
-    <html lang="en">
+    <html lang="en" className="js">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -55,6 +56,13 @@ export function Layout({children}: {children?: React.ReactNode}) {
 }
 
 export default function App() {
+  // Entrances are held (see `html.js:not(.go)` in the stylesheet) until after
+  // hydration. Starting them in the server HTML makes them finish, then play
+  // again when React attaches.
+  useEffect(() => {
+    document.documentElement.classList.add('go');
+  }, []);
+
   return (
     <>
       <SiteHeader />

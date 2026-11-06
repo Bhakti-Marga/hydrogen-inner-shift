@@ -71,16 +71,14 @@ export function ConfirmationSection({
       </div>
 
       <div className="flex flex-1 flex-col items-center justify-center px-6 pb-24 text-center md:pb-36">
-        <div className="motion-safe:animate-fade-in">
-          <AvatarPill
-            avatar={pill.avatar}
-            tone="glass"
-            size="sm"
-            entrance="load"
-          >
-            {pill.text}
-          </AvatarPill>
-        </div>
+        <AvatarPill
+          avatar={pill.avatar}
+          tone="glass"
+          size="sm"
+          entrance="load"
+        >
+          {pill.text}
+        </AvatarPill>
         <h1 className="mt-6 text-banner font-light motion-safe:animate-rise-in md:text-banner-md lg:text-banner-lg">
           {headline}
         </h1>

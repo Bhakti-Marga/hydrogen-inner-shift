@@ -220,7 +220,9 @@ springs, scale pops or side slides.
 - Durations: `duration-fast|base|slow|page|reveal|stagger`; easings:
   `ease-base|out-soft`. Hovers use `fast`/`base`, entrances `reveal`/`page`.
 - Keyframes are `--animate-*` tokens: `animate-rise-in`, `animate-fade-in`
-  (hero, on load), `animate-reveal` (scroll, via `<Reveal>`),
+  (hero, on load), `animate-rise` (the same rise without a fade — use it
+  when the group contains `backdrop-filter`, which otherwise samples a stale
+  frame until the fade ends), `animate-reveal` (scroll, via `<Reveal>`),
   `animate-settle` (image easing from 1.06 to 1 scale) and
   `animate-pill-open` / `animate-pill-text` (`AvatarPill` entrance).
 - Hovers carry the same idea: `fill-rise` (a fill with a curved top rising

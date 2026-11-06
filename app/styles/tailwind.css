@@ -433,6 +433,9 @@
      Always pair with `motion-safe:`.
      ========================================= */
   --animate-rise-in: riseIn var(--duration-page) var(--ease-out-soft) both;
+  /* Transform only. A fade groups descendants, and backdrop-filter then
+     samples a stale frame (often the previous page) until the fade ends. */
+  --animate-rise: rise var(--duration-page) var(--ease-out-soft) both;
   --animate-fade-in: fadeIn var(--duration-page) var(--ease-out-soft) both;
   --animate-count-up: countUp var(--duration-count) var(--ease-out-soft) both;
   /* Scroll reveals fill `backwards` only, so no transform (and no stacking
@@ -445,12 +448,12 @@
     calc(
       var(--reveal-order, 0) * var(--duration-stagger) + var(--duration-base)
     )
-    backwards;
+    both;
   --animate-pill-text: fadeIn var(--duration-slow) var(--ease-out-soft)
     calc(
       var(--reveal-order, 0) * var(--duration-stagger) + var(--duration-slow)
     )
-    backwards;
+    both;
 }
 
 /* Integer counter animated from 0 to `--count-to` (see `<CountUp />`). The
@@ -604,6 +607,49 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(24px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Hold the first keyframe so a hero never flashes fully drawn and then
+   restarts. With JS, the animation itself waits for `html.go` (added once
+   hydration has attached); otherwise it would play in the server HTML and
+   again when React mounts. Fill-mode `both` keeps the end state. */
+@media (prefers-reduced-motion: no-preference) {
+  .motion-safe\:animate-rise-in {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  .motion-safe\:animate-rise {
+    transform: translateY(24px);
+  }
+
+  .motion-safe\:animate-fade-in,
+  .motion-safe\:animate-pill-text {
+    opacity: 0;
+  }
+
+  .motion-safe\:animate-pill-open {
+    clip-path: inset(0 calc(100% - var(--pill-closed)) 0 0 round 9999px);
+  }
+
+  html.js:not(.go) :is(
+    .motion-safe\:animate-rise-in,
+    .motion-safe\:animate-rise,
+    .motion-safe\:animate-fade-in,
+    .motion-safe\:animate-pill-text,
+    .motion-safe\:animate-pill-open
+  ) {
+    animation: none;
   }
 }
 

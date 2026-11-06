@@ -18,7 +18,8 @@ export type AboutTogetherSectionProps = {
 
 /**
  * Three photographs in a row: structure, then depth, then the change that
- * holds. A cobalt disc sits on each seam.
+ * holds. A cobalt disc sits on each seam. Earlier cards stack above the next
+ * one so the disc stays in front while the rise transform is active.
  */
 export function AboutTogetherSection({
   pill,
@@ -41,7 +42,12 @@ export function AboutTogetherSection({
 
         <ul className="relative mt-10 grid w-full gap-1.5 lg:mt-12 lg:grid-cols-3">
           {steps.map((step, index) => (
-            <Reveal key={step.title} as="li" order={index} className="bg-cloud">
+            <Reveal
+              key={step.title}
+              as="li"
+              order={index}
+              className={`bg-cloud${index === 0 ? ' lg:z-20' : index === 1 ? ' lg:z-10' : ''}`}
+            >
               <img
                 src={step.image.src}
                 alt={step.image.alt}
