@@ -3,6 +3,8 @@ import {
   AvatarPill,
   Button,
   Container,
+  HeroActions,
+  HeroMobileBand,
   Section,
   VideoModal,
   type SectionPadding,
@@ -20,7 +22,10 @@ export type ResultsHeroSectionProps = {
     src: string;
     title: string;
   };
-  /** Still shown before the film loads, on small screens and with reduced motion. */
+  /**
+   * Landscape band on small screens. From `md` up it is the still behind the
+   * film when motion is reduced.
+   */
   poster: {src: string; width: number; height: number};
   facts: string[];
   padding?: SectionPadding;
@@ -28,8 +33,9 @@ export type ResultsHeroSectionProps = {
 };
 
 /**
- * Results hero: the same full-bleed film treatment as the homepage, with the
- * reviews reel behind the headline and no program column on the right.
+ * Results hero: the homepage film treatment without the program column.
+ * On small screens it uses the same landscape band and full-width actions.
+ * From `md` up the reviews reel sits behind the headline.
  */
 export function ResultsHeroSection({
   pill,
@@ -48,26 +54,30 @@ export function ResultsHeroSection({
     <Section
       padding={padding}
       tone="abyss"
-      className={`relative isolate flex min-h-svh flex-col justify-end overflow-hidden lg:min-h-173.5 ${className ?? ''}`}
+      className={`relative isolate flex flex-col overflow-hidden md:min-h-[calc(100svh+4rem)] md:justify-end ${className ?? ''}`}
     >
+      <HeroMobileBand
+        src={poster.src}
+        width={poster.width}
+        height={poster.height}
+        priority
+      />
       <BackgroundFilm src={film.src} poster={poster} paused={filmOpen} />
 
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-abyss/50 md:bg-transparent md:bg-linear-to-r md:from-abyss md:from-[13%] md:to-abyss/0 md:to-[95%]"
+        className="absolute inset-0 -z-10 hidden bg-abyss/50 md:block md:bg-transparent md:bg-linear-to-r md:from-abyss md:from-[13%] md:to-abyss/0 md:to-[95%]"
       />
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-linear-to-b from-abyss/0 from-35% to-abyss"
+        className="absolute inset-0 -z-10 hidden bg-linear-to-b from-abyss/0 from-35% to-abyss md:block"
       />
 
-      <Container size="narrow" className="pt-32 pb-12">
+      <Container size="narrow" className="pt-58 pb-12 md:pt-48 md:pb-28">
         <div className="flex max-w-220 flex-col items-start gap-10">
-          <div className="motion-safe:animate-fade-in">
-            <AvatarPill avatar={pill.avatar} tone="glass" size="sm" entrance="load">
-              {pill.text}
-            </AvatarPill>
-          </div>
+          <AvatarPill avatar={pill.avatar} tone="glass" size="sm" entrance="load">
+            {pill.text}
+          </AvatarPill>
 
           <h1 className="text-banner font-light motion-safe:animate-rise-in md:text-banner-md lg:text-banner-lg">
             {headline.split('\n').map((line, index) => (
@@ -78,7 +88,7 @@ export function ResultsHeroSection({
             ))}
           </h1>
 
-          <div className="flex flex-wrap gap-2 motion-safe:animate-rise-in motion-safe:[animation-delay:var(--duration-slow)]">
+          <HeroActions>
             <Button href={primaryCta.href} tone="ember">
               {primaryCta.label}
             </Button>
@@ -93,7 +103,7 @@ export function ResultsHeroSection({
               </span>
               {filmCtaLabel}
             </Button>
-          </div>
+          </HeroActions>
         </div>
 
         <ul className="mt-16 grid border-t border-white/14 text-attribution text-white/82 motion-safe:animate-fade-in motion-safe:[animation-delay:var(--duration-page)] sm:grid-cols-[minmax(0,2.4fr)_minmax(0,1fr)_minmax(0,1fr)]">
@@ -120,8 +130,9 @@ export function ResultsHeroSection({
 
 /**
  * Muted, looping reviews film behind the hero. Captions are burnt into this
- * reel, so the decorative copy stays silent. Rendered only on the client from
- * `md` up and without reduced motion, so phones and SSR get the poster alone.
+ * reel, so the decorative copy stays silent. The film is in the first HTML
+ * from `md` up (a `<source media>` keeps phones off it). Phones get the
+ * landscape band instead, so this still is only the reduced-motion poster.
  */
 function BackgroundFilm({
   src,
@@ -132,25 +143,14 @@ function BackgroundFilm({
   poster: ResultsHeroSectionProps['poster'];
   paused: boolean;
 }) {
-  const [enabled, setEnabled] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const query = window.matchMedia(
-      '(min-width: 768px) and (prefers-reduced-motion: no-preference)',
-    );
-    const update = () => setEnabled(query.matches);
-    update();
-    query.addEventListener('change', update);
-    return () => query.removeEventListener('change', update);
-  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
     if (paused) video.pause();
     else video.play().catch(() => {});
-  }, [paused, enabled]);
+  }, [paused]);
 
   return (
     <>
@@ -159,23 +159,24 @@ function BackgroundFilm({
         alt=""
         width={poster.width}
         height={poster.height}
-        fetchPriority="high"
-        className="absolute inset-0 -z-20 size-full object-cover"
+        className="absolute inset-0 -z-20 hidden size-full object-cover motion-reduce:md:block"
       />
-      {enabled ? (
-        <video
-          ref={videoRef}
+      <video
+        ref={videoRef}
+        aria-hidden
+        muted
+        loop
+        playsInline
+        autoPlay
+        preload="auto"
+        className="pointer-events-none absolute inset-0 -z-20 hidden size-full object-cover motion-safe:md:block"
+      >
+        <source
           src={src}
-          poster={poster.src}
-          aria-hidden
-          muted
-          loop
-          playsInline
-          autoPlay
-          preload="metadata"
-          className="absolute inset-0 -z-20 size-full object-cover motion-safe:animate-fade-in"
+          type="video/mp4"
+          media="(min-width: 768px) and (prefers-reduced-motion: no-preference)"
         />
-      ) : null}
+      </video>
     </>
   );
 }

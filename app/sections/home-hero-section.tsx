@@ -5,6 +5,8 @@ import {
   Button,
   Container,
   Eyebrow,
+  HeroActions,
+  HeroMobileBand,
   Section,
   VideoModal,
   type SectionPadding,
@@ -72,19 +74,13 @@ export function HomeHeroSection({
     <Section
       padding={padding}
       tone="abyss"
-      className={`relative isolate flex flex-col overflow-hidden md:min-h-svh md:justify-end${className ? ` ${className}` : ''}`}
+      className={`relative isolate flex flex-col overflow-hidden md:min-h-[calc(100svh+4rem)] md:justify-end ${className ?? ''}`}
     >
-      <div aria-hidden className="absolute inset-x-0 top-0 -z-20 h-56 md:hidden">
-        <img
-          src="/images/pages/home/hero-band-mobile.jpg"
-          alt=""
-          width={800}
-          height={458}
-          className="size-full object-cover"
-        />
-        <div className="absolute inset-0 bg-linear-to-b from-abyss to-transparent" />
-        <div className="absolute inset-0 bg-linear-to-b from-transparent from-[29.9%] to-abyss" />
-      </div>
+      <HeroMobileBand
+        src="/images/pages/home/hero-band-mobile.jpg"
+        width={800}
+        height={458}
+      />
       <BackgroundFilm src={film.src} poster={poster} paused={filmOpen} />
 
       <div
@@ -96,10 +92,10 @@ export function HomeHeroSection({
         className="absolute inset-0 -z-10 hidden bg-linear-to-b from-abyss/0 from-[29.9%] to-abyss md:block"
       />
 
-      <Container className="pt-48 pb-12 md:pt-32 md:pb-28">
+      <Container className="pt-58 pb-12 md:pt-48 md:pb-28">
         <div className="flex flex-col gap-16 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
           <div className="flex max-w-2xl flex-col items-start gap-8 md:gap-10">
-            <div className="max-w-full motion-safe:animate-fade-in">
+            <div className="max-w-full">
               <AvatarPill avatar={pill.avatar} tone="glass" entrance="load">
                 {pill.text}
               </AvatarPill>
@@ -115,22 +111,21 @@ export function HomeHeroSection({
               </p>
             </div>
 
-            <div className="flex w-full flex-col gap-4 motion-safe:animate-rise-in motion-safe:[animation-delay:var(--duration-slow)] md:w-auto md:flex-row md:flex-wrap md:gap-2">
-              <Button href={primaryCta.href} tone="ember" className="max-md:w-full">
+            <HeroActions>
+              <Button href={primaryCta.href} tone="ember">
                 {primaryCta.label}
               </Button>
               <Button
                 tone="glass"
                 aria-haspopup="dialog"
-                className="max-md:w-full"
                 onClick={() => setFilmOpen(true)}
               >
                 {filmCtaLabel}
               </Button>
-            </div>
+            </HeroActions>
           </div>
 
-          <div className="flex w-full flex-col gap-2 motion-safe:animate-rise-in motion-safe:[animation-delay:var(--duration-page)] lg:w-125">
+          <div className="flex w-full flex-col gap-2 motion-safe:animate-rise motion-safe:[animation-delay:var(--duration-page)] lg:w-125">
             <Eyebrow>{programsLabel}</Eyebrow>
             <ul className="flex flex-col gap-2">
               {programs.map((program) => (
@@ -180,7 +175,7 @@ function ProgramCard({program}: {program: HeroProgram}) {
   return (
     <a
       href={program.href}
-      className="group flex min-h-30 items-center justify-between bg-white/10 p-6 backdrop-blur-md transition-colors duration-[var(--duration-slow)] ease-out-soft hover:bg-white hover:text-abyss focus-visible:bg-white focus-visible:text-abyss focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white motion-reduce:transition-none md:min-h-0 md:items-start [--tw-duration:var(--duration-slow)]"
+      className="group flex min-h-30 items-center justify-between bg-white/10 p-6 backdrop-blur-glass transition-colors duration-[var(--duration-slow)] ease-out-soft hover:bg-white hover:text-abyss focus-visible:bg-white focus-visible:text-abyss focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white motion-reduce:transition-none md:min-h-0 md:items-start [--tw-duration:var(--duration-slow)]"
     >
       <span className="flex min-w-0 flex-1 flex-col">
         <span className="flex flex-col gap-1">
@@ -226,7 +221,9 @@ function ProgramCard({program}: {program: HeroProgram}) {
 
 /**
  * Muted, looping, caption-free film behind the hero from `md` up. Phones get
- * the still band at the top of the section, and never download the film.
+ * the still band at the top of the section, and never download the film. The
+ * film is in the first HTML (a `<source media>` keeps it off phones) so a
+ * still is not painted in front of it while JavaScript starts.
  */
 function BackgroundFilm({
   src,
@@ -237,25 +234,14 @@ function BackgroundFilm({
   poster: HomeHeroSectionProps['poster'];
   paused: boolean;
 }) {
-  const [enabled, setEnabled] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const query = window.matchMedia(
-      '(min-width: 768px) and (prefers-reduced-motion: no-preference)',
-    );
-    const update = () => setEnabled(query.matches);
-    update();
-    query.addEventListener('change', update);
-    return () => query.removeEventListener('change', update);
-  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
     if (paused) video.pause();
     else video.play().catch(() => {});
-  }, [paused, enabled]);
+  }, [paused]);
 
   return (
     <>
@@ -264,22 +250,24 @@ function BackgroundFilm({
         alt=""
         width={poster.width}
         height={poster.height}
-        className="absolute inset-0 -z-20 hidden size-full object-cover md:block"
+        className="absolute inset-0 -z-20 hidden size-full object-cover motion-reduce:md:block"
       />
-      {enabled ? (
-        <video
-          ref={videoRef}
+      <video
+        ref={videoRef}
+        aria-hidden
+        muted
+        loop
+        playsInline
+        autoPlay
+        preload="auto"
+        className="pointer-events-none absolute inset-0 -z-20 hidden size-full object-cover motion-safe:md:block"
+      >
+        <source
           src={src}
-          poster={poster.src}
-          aria-hidden
-          muted
-          loop
-          playsInline
-          autoPlay
-          preload="metadata"
-          className="absolute inset-0 -z-20 size-full object-cover motion-safe:animate-fade-in"
+          type="video/mp4"
+          media="(min-width: 768px) and (prefers-reduced-motion: no-preference)"
         />
-      ) : null}
+      </video>
     </>
   );
 }

@@ -37,6 +37,7 @@
   /* Frosted panel over photography (about hero, left half and founder cards) */
   --blur-frost: 17px;
   --blur-sheet: 13px; /* day-immersion card */
+  --blur-glass: 24px; /* homepage program cards; Figma background blur */
 
   /* =========================================
      Fonts

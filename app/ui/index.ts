@@ -6,6 +6,7 @@ export type {ButtonProps} from './button';
 export {Container} from './container';
 export {CountUp} from './count-up';
 export {Eyebrow} from './eyebrow';
+export {HeroActions, HeroMobileBand} from './hero-mobile';
 export {Reveal} from './reveal';
 export {ScrollChevrons} from './scroll-chevrons';
 export {Section} from './section';

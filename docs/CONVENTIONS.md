@@ -52,6 +52,8 @@ one-off class when the design repeats.
 | `Section`        | Outer block: `padding` preset (`snug` ≈112px, `roomy` 160px on desktop), `tone` (`default`, `abyss`, `light`, `white`, `soot`, `glacier`) |
 | `Container`      | Content column with 24px / 60px (`xl`) outside gutters; `size` `content` (1320px) or `narrow` (1264px) |
 | `Button`         | Pill CTA; `tone` `ember`/`glass`/`light`/`cobalt`, `size` `lg`/`md`/`md-icon`/`md-badge` (trailing 41px arrow badge)/`sm`/`form` (submit on a white card); `href` renders a link. `ember`/`light` hover with a rising fill (`fill-rise`), trailing icons nudge right |
+| `HeroActions`    | The hero's button group. On small screens the buttons stack and share one width (the column). From `md` they sit in a row, each sized to its label. Every hero with more than one button uses this; don't lay those buttons out by hand |
+| `HeroMobileBand` | Landscape photograph across the top of a hero on small screens, fading into the hero colour so the copy sits on a solid field. Use it when the hero's picture would otherwise be cropped tall behind the copy. Hidden from `md`, where that hero uses its own full-bleed image or film. Skip it when the picture is the layout (the why photo row, the mission mosaic) |
 | `Reveal`         | Block that rises into place once when scrolled into view; `as` `div`/`li`/`article`/`h2`, `order` staggers siblings. Visible by default (SSR, no-JS, reduced motion, already on screen at hydration) |
 | `CountUp`        | Whole-number stat that counts up from 0 when scrolled into view (CSS-driven; final value for SSR, reduced motion and screen readers) |
 | `AvatarPill`     | Avatar + short line in a frosted pill; `tone` `dark`/`glass`/`cloud`/`white`/`soft`/`dusk`, `size` `md` (60px) / `sm` (44px). Opens out from its avatar once: `entrance` `reveal` (inside a `<Reveal>`, default) or `load` (hero). `flushBelow="md"` insets the avatar on small screens and is only for the homepage hero. `glass` is the shared photo pill (white at 15%, blur, white ring at 12%). `dusk` is the day-immersion pill (`#10151C` at 10%) |
@@ -114,7 +116,8 @@ ffmpeg -i master.mp4 -c:v libx264 -preset slow -crf 24 -profile:v high \
 - Vertical (9:16) films, e.g. testimonials, ship at 720×1280 with `-crf 25`
   (`-vf scale=720:1280`): the portrait player is never taller than the viewport.
 - Background loops reuse the same file muted, with no caption track, and only
-  load from `md` up without reduced motion; a poster image covers the rest.
+  load from `md` up without reduced motion (`<source media>`). The still is
+  for phones and reduced motion; it is not painted behind the desktop film.
 
 ## 3. Design tokens
 

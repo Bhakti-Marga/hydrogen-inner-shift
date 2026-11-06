@@ -12,7 +12,6 @@ import {ProgramsJourneySection} from '~/sections/programs-journey-section';
 import {ProgramsPairSection} from '~/sections/programs-pair-section';
 import {ProgramsTasterSection} from '~/sections/programs-taster-section';
 import {SiteFooterSection} from '~/sections/site-footer-section';
-
 const TITLE = 'Programs — Inner Shift';
 const DESCRIPTION =
   'Leadership programs for teams: a first taste of the work, or a full journey through the beliefs, values and identity that shape how they lead.';
@@ -38,7 +37,7 @@ export default function Programs() {
           text: 'Ready for the Full program?',
           avatar: {src: '/images/pages/home/hero-pill-avatar.jpg'},
         }}
-        headline={'Three immersions. One\nteam. Paced around you.'}
+        headline="Three immersions. One team. Paced around you."
         intro="We take your leadership team into nature three times within six months, four days at a time. In between, we hold the thread, and afterwards, we stay with you for a year."
         primaryCta={{label: 'Start the conversation', href: CONTACT_FORM_HREF}}
         secondaryCta={{label: 'Learn more ↓', href: '#programs'}}
