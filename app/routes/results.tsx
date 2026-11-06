@@ -7,7 +7,6 @@ import {ResultsCloseSection} from '~/sections/results-close-section';
 import {ResultsHeroSection} from '~/sections/results-hero-section';
 import {ResultsTestimonialsSection} from '~/sections/results-testimonials-section';
 import {SiteFooterSection} from '~/sections/site-footer-section';
-import {SiteHeaderSection} from '~/sections/site-header-section';
 
 const TITLE = 'Results — Inner Shift';
 const DESCRIPTION =
@@ -96,17 +95,6 @@ export const links: Route.LinksFunction = () => [
 export default function Results() {
   return (
     <main className="relative bg-abyss text-white">
-      <SiteHeaderSection
-        className="absolute inset-x-0 top-0 z-10"
-        links={[
-          {label: 'Programs', href: '/programs'},
-          {label: 'Mission', href: '/mission'},
-          {label: 'About us', href: '/about'},
-          {label: 'Why', href: '/why'},
-          {label: 'Results', href: '/results', current: true},
-        ]}
-        cta={{label: 'Book a consultation', href: CONTACT_FORM_HREF}}
-      />
       <ResultsHeroSection
         pill={{
           text: 'Don’t take our word for it. Take theirs!',

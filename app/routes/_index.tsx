@@ -14,7 +14,6 @@ import {HomeStatementSection} from '~/sections/home-statement-section';
 import {HomeStatsSection} from '~/sections/home-stats-section';
 import {HomeTestimonialsSection} from '~/sections/home-testimonials-section';
 import {SiteFooterSection} from '~/sections/site-footer-section';
-import {SiteHeaderSection} from '~/sections/site-header-section';
 
 const TITLE = 'Inner Shift — Shaping the future of work from the inside out';
 const DESCRIPTION =
@@ -160,17 +159,6 @@ export const links: Route.LinksFunction = () => [
 export default function Homepage() {
   return (
     <main className="relative">
-      <SiteHeaderSection
-        className="absolute inset-x-0 top-0 z-10"
-        links={[
-          {label: 'Programs', href: '/programs'},
-          {label: 'Mission', href: '/mission'},
-          {label: 'Why', href: '/why'},
-          {label: 'About us', href: '/about'},
-          {label: 'Results', href: '/results'},
-        ]}
-        cta={{label: 'Book a consultation', href: CONTACT_FORM_HREF}}
-      />
       <HomeHeroSection
         pill={{
           text: 'For aspiring executives, founders and leadership teams',

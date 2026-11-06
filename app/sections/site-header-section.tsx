@@ -1,7 +1,11 @@
 import {useEffect, useId, useRef, useState} from 'react';
+import {useLocation} from 'react-router';
 import {Button, Container, Section, Wordmark, type SectionPadding} from '~/ui';
 
 type NavLink = {label: string; href: string; current?: boolean};
+
+/** Both header labels, so the pill stays one width and the links don't shift. */
+const CTA_WIDTH = ['Start a conversation', 'Book a consultation'];
 
 export type SiteHeaderSectionProps = {
   links: NavLink[];
@@ -27,6 +31,8 @@ export function SiteHeaderSection({
   const menuId = useId();
   const onPhoto = tone === 'overlay';
 
+  const {pathname} = useLocation();
+
   useEffect(() => {
     const desktop = window.matchMedia('(min-width: 64rem)');
     const close = () => {
@@ -36,16 +42,18 @@ export function SiteHeaderSection({
     return () => desktop.removeEventListener('change', close);
   }, []);
 
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
   return (
     <Section
       as="header"
       padding={padding}
       tone={onPhoto ? 'default' : 'white'}
-      className={`motion-safe:animate-fade-in${onPhoto ? ' text-white' : ''}${className ? ` ${className}` : ''}`}
+      className={`${onPhoto ? 'text-white' : ''}${className ? ` ${className}` : ''}`}
     >
-      <Container
-        className={`relative flex items-center justify-between gap-6 ${onPhoto ? 'pt-4.5' : 'py-5'}`}
-      >
+      <Container className="relative flex items-center justify-between gap-6 py-5">
         <a href="/" className="whitespace-nowrap">
           <Wordmark />
         </a>
@@ -60,15 +68,31 @@ export function SiteHeaderSection({
                 key={link.href}
                 href={link.href}
                 aria-current={link.current ? 'page' : undefined}
-                className={`whitespace-nowrap text-body transition-opacity duration-fast hover:opacity-70${link.current ? ' border-b border-current' : ''}`}
+                className={`whitespace-nowrap border-b text-body transition-opacity duration-fast hover:opacity-70 ${link.current ? 'border-current' : 'border-transparent'}`}
               >
                 {link.label}
               </a>
             ))}
           </nav>
           <div className="hidden sm:block">
-            <Button href={cta.href} tone={ctaTone} size="sm">
-              {cta.label}
+            <Button
+              href={cta.href}
+              tone={ctaTone}
+              size="sm"
+              style={{transition: 'none'}}
+            >
+              <span className="inline-grid justify-items-center">
+                <span className="col-start-1 row-start-1">{cta.label}</span>
+                {CTA_WIDTH.map((label) => (
+                  <span
+                    key={label}
+                    aria-hidden
+                    className="invisible col-start-1 row-start-1"
+                  >
+                    {label}
+                  </span>
+                ))}
+              </span>
             </Button>
           </div>
           <button
@@ -129,7 +153,7 @@ const MENU_ITEMS: MenuItem[] = [
     index: '05',
     label: 'About us',
     href: '/about',
-    image: '/images/menu/menu-results.jpg',
+    image: '/images/menu/menu-about.jpg',
   },
 ];
 

@@ -12,7 +12,6 @@ import {ProgramsJourneySection} from '~/sections/programs-journey-section';
 import {ProgramsPairSection} from '~/sections/programs-pair-section';
 import {ProgramsTasterSection} from '~/sections/programs-taster-section';
 import {SiteFooterSection} from '~/sections/site-footer-section';
-import {SiteHeaderSection} from '~/sections/site-header-section';
 
 const TITLE = 'Programs — Inner Shift';
 const DESCRIPTION =
@@ -34,18 +33,6 @@ export const links: Route.LinksFunction = () => [
 export default function Programs() {
   return (
     <main className="min-h-svh bg-white text-ink">
-      <SiteHeaderSection
-        tone="solid"
-        ctaTone="ember"
-        links={[
-          {label: 'Programs', href: '/programs', current: true},
-          {label: 'Mission', href: '/mission'},
-          {label: 'About us', href: '/about'},
-          {label: 'Why', href: '/why'},
-          {label: 'Results', href: '/results'},
-        ]}
-        cta={{label: 'Start a conversation', href: CONTACT_FORM_HREF}}
-      />
       <ProgramsHeroSection
         pill={{
           text: 'Ready for the Full program?',

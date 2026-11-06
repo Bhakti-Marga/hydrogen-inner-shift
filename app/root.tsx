@@ -9,6 +9,7 @@ import {
   ScrollRestoration,
 } from 'react-router';
 import {BhaktiHubPixel} from '~/components/bhakti-hub-pixel';
+import {SiteHeader} from '~/components/site-header';
 import favicon from '~/assets/brand/favicon.png';
 import tailwindStyles from '~/styles/tailwind.css?url';
 
@@ -54,7 +55,12 @@ export function Layout({children}: {children?: React.ReactNode}) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <>
+      <SiteHeader />
+      <Outlet />
+    </>
+  );
 }
 
 export function ErrorBoundary() {

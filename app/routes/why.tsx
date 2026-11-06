@@ -4,7 +4,6 @@ import {
   ContactFormModal,
 } from '~/components/contact-form-modal';
 import {SiteFooterSection} from '~/sections/site-footer-section';
-import {SiteHeaderSection} from '~/sections/site-header-section';
 import {WhyCloseSection} from '~/sections/why-close-section';
 import {WhyHeroSection} from '~/sections/why-hero-section';
 import {WhyLeverSection} from '~/sections/why-lever-section';
@@ -28,18 +27,6 @@ export const meta: Route.MetaFunction = () => [
 export default function Why() {
   return (
     <main className="min-h-svh bg-white text-ink">
-      <SiteHeaderSection
-        tone="solid"
-        ctaTone="ember"
-        links={[
-          {label: 'Programs', href: '/programs'},
-          {label: 'Mission', href: '/mission'},
-          {label: 'About us', href: '/about'},
-          {label: 'Why', href: '/why', current: true},
-          {label: 'Results', href: '/results'},
-        ]}
-        cta={{label: 'Book a consultation', href: CONTACT_FORM_HREF}}
-      />
       <WhyHeroSection
         headline="It's not a skills gap. It's a human gap."
         intro="Global engagement has fallen for two years running. Manager engagement is falling faster — down from 27% to 22% in the last year alone. The people meant to bring teams to life are running out of it themselves."

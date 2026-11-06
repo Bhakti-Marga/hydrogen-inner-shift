@@ -10,8 +10,6 @@ import {MissionSourcesSection} from '~/sections/mission-sources-section';
 import {MissionStatementSection} from '~/sections/mission-statement-section';
 import {MissionTeamSection} from '~/sections/mission-team-section';
 import {SiteFooterSection} from '~/sections/site-footer-section';
-import {SiteHeaderSection} from '~/sections/site-header-section';
-
 const TITLE = 'Mission — Inner Shift';
 const DESCRIPTION =
   'We work on the source of how people lead: who they are being, and how they understand themselves and each other.';
@@ -33,18 +31,6 @@ export const links: Route.LinksFunction = () => [
 export default function Mission() {
   return (
     <main className="min-h-svh bg-white text-ink">
-      <SiteHeaderSection
-        tone="solid"
-        ctaTone="ember"
-        links={[
-          {label: 'Programs', href: '/programs'},
-          {label: 'Mission', href: '/mission', current: true},
-          {label: 'About us', href: '/about'},
-          {label: 'Why', href: '/why'},
-          {label: 'Results', href: '/results'},
-        ]}
-        cta={{label: 'Start a conversation', href: CONTACT_FORM_HREF}}
-      />
       <MissionHeroSection
         fire={{
           src: FIRE,

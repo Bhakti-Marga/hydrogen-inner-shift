@@ -10,7 +10,6 @@ import {AboutProfileSection} from '~/sections/about-profile-section';
 import {AboutQuotesSection} from '~/sections/about-quotes-section';
 import {AboutTogetherSection} from '~/sections/about-together-section';
 import {SiteFooterSection} from '~/sections/site-footer-section';
-import {SiteHeaderSection} from '~/sections/site-header-section';
 
 const TITLE = 'About us — Inner Shift';
 const DESCRIPTION =
@@ -43,17 +42,6 @@ export const links: Route.LinksFunction = () => [
 export default function About() {
   return (
     <main className="relative min-h-svh bg-white text-white">
-      <SiteHeaderSection
-        className="absolute inset-x-0 top-0 z-10"
-        links={[
-          {label: 'Programs', href: '/programs'},
-          {label: 'Mission', href: '/mission'},
-          {label: 'About us', href: '/about', current: true},
-          {label: 'Why', href: '/why'},
-          {label: 'Results', href: '/results'},
-        ]}
-        cta={{label: 'Book a consultation', href: CONTACT_FORM_HREF}}
-      />
       <AboutHeroSection
         headline="Two very different paths. One shared belief: the hard part of leadership was never the part you can see."
         intro="We couldn't find anyone building leadership work for that hidden layer — so we built it ourselves. This is who's actually running it."
