@@ -408,7 +408,7 @@
   --spacing-strip-closed-md: 155px;
   --spacing-strip-open-md: 608px;
   --spacing-strip-gap: 9px;
-  --spacing-strip-height: 440px;
+  /* Desktop row height. On a phone the row is as tall as the open panel is wide. */
   --spacing-strip-height-md: 612px;
 
   /* =========================================
@@ -536,31 +536,37 @@
 }
 
 /* Photo strip with one open panel (see `HomeNatureSection`). Needs an
-   `@container` ancestor plus `--strip-index` and `--strip-count`. Translates
-   the track so the open panel sits centred, clamped at both ends; children
-   size themselves with `--strip-closed` / `--strip-open`. */
+   `@container` ancestor plus `--strip-index` and `--strip-count`. On a phone
+   the open panel sits flush left with one closed panel beside it, and the
+   row is as tall as that panel is wide so the open photo is square. From
+   `md` it is centred, clamped at both ends. Children size themselves with
+   `--strip-closed` / `--strip-open`. */
 @utility strip-track {
   --strip-closed: var(--spacing-strip-closed);
   --strip-step: calc(var(--strip-closed) + var(--spacing-strip-gap));
-  --strip-open: min(
-    var(--spacing-strip-open-md),
-    100cqw - 2 * var(--strip-step)
+  /* Phone: one closed panel beside the open one, which sits flush left. */
+  --strip-open: min(var(--spacing-strip-open-md), 100cqw - var(--strip-step));
+  --strip-center: clamp(
+    0px,
+    var(--strip-index) * var(--strip-step),
+    (var(--strip-count) - 1) * var(--strip-step) + var(--strip-open) - 100cqw
   );
   display: flex;
   gap: var(--spacing-strip-gap);
-  translate: calc(
-      -1 *
-        clamp(
-          0px,
-          var(--strip-index) * var(--strip-step) + var(--strip-open) / 2 - 50cqw,
-          (var(--strip-count) - 1) * var(--strip-step) + var(--strip-open) -
-            100cqw
-        )
-    )
-    0;
+  /* `--strip-shift` limits centring so a hovered panel stays under the pointer. */
+  translate: calc(-1 * var(--strip-shift, var(--strip-center))) 0;
 
   @variant md {
     --strip-closed: var(--spacing-strip-closed-md);
+    --strip-open: min(
+      var(--spacing-strip-open-md),
+      100cqw - 2 * var(--strip-step)
+    );
+    --strip-center: clamp(
+      0px,
+      var(--strip-index) * var(--strip-step) + var(--strip-open) / 2 - 50cqw,
+      (var(--strip-count) - 1) * var(--strip-step) + var(--strip-open) - 100cqw
+    );
   }
 }
 

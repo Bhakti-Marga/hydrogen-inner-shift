@@ -249,6 +249,10 @@ springs, scale pops or side slides.
 - Wrap section content in `<Container>` (1320px column, 60px margins at the
   1440px design width). Only full-bleed media and carousels sit outside it.
 - `--container-content` backs `max-w-content`.
-- `strip-track` (`@utility`) is the expanding photo strip: one open panel,
-  centred by translating the track and clamped at both ends. Panel sizes are
-  `--spacing-strip-*` tokens; see `HomeNatureSection`.
+- `strip-track` (`@utility`) is the expanding photo strip: one open panel.
+  From the `md` breakpoint it is centred, with a closed panel's worth of
+  room on each side.   On a phone the open panel sits flush left, with room
+  for one closed panel beside it, and the row matches that panel's width
+  so the open photo is square. Hover uses `--strip-shift` to stop short
+  of that aim when it would slide the panel past the pointer. Panel sizes
+  are `--spacing-strip-*` tokens; see `HomeNatureSection`.

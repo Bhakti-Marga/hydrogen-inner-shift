@@ -102,9 +102,9 @@ export function HomeTestimonialsSection({
           >
             {listLabel}
           </Eyebrow>
-          <ul className="flex w-full flex-col gap-2 md:w-auto md:flex-row md:flex-wrap">
+          <ul className="flex w-full min-w-0 flex-col gap-2 md:flex-1 md:flex-row md:flex-nowrap md:overflow-x-auto md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:hidden">
             {testimonials.map((testimonial) => (
-              <li key={testimonial.name}>
+              <li key={testimonial.name} className="md:shrink-0">
                 <WatchPill
                   name={testimonial.name}
                   watchLabel={watchLabel}
@@ -119,6 +119,43 @@ export function HomeTestimonialsSection({
       <VideoModal open={open} onClose={() => setOpen(false)} {...video} />
     </Section>
   );
+}
+
+/** Latest hover or focus; a newer one cancels an in-flight settle. */
+let settlePillFrame = 0;
+
+/**
+ * Keep a pill inside the scrolling row while "▶ WATCH:" opens. The row cannot
+ * scroll ahead of that growth, so this follows the pill for the open duration.
+ */
+function settlePill(button: HTMLButtonElement) {
+  const list = button.closest('ul');
+  if (!(list instanceof HTMLElement)) return;
+  if (getComputedStyle(list).overflowX !== 'auto') return;
+
+  const token = ++settlePillFrame;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const start = performance.now();
+  const duration = reduce ? 0 : 320;
+
+  const step = (now: number) => {
+    if (token !== settlePillFrame) return;
+    const reveal = button.querySelector<HTMLElement>('[data-watch]');
+    const content = reveal?.firstElementChild;
+    const extra =
+      reveal && content instanceof HTMLElement
+        ? Math.max(0, content.scrollWidth - reveal.clientWidth)
+        : 0;
+    const listBox = list.getBoundingClientRect();
+    const buttonBox = button.getBoundingClientRect();
+    const pastRight = buttonBox.right + extra - listBox.right;
+    const pastLeft = listBox.left - buttonBox.left;
+    if (pastRight > 0.5) list.scrollLeft += pastRight;
+    else if (extra < 1 && pastLeft > 0.5) list.scrollLeft -= pastLeft;
+    if (now - start < duration) requestAnimationFrame(step);
+  };
+
+  requestAnimationFrame(step);
 }
 
 /**
@@ -139,6 +176,8 @@ function WatchPill({
       type="button"
       aria-haspopup="dialog"
       aria-label={`${watchLabel} ${name}`}
+      onMouseEnter={(event) => settlePill(event.currentTarget)}
+      onFocus={(event) => settlePill(event.currentTarget)}
       onClick={onClick}
       className="group flex w-full items-center justify-center gap-2.5 rounded-full bg-cloud px-5.5 py-4 text-body font-medium whitespace-nowrap text-ink/60 transition-colors duration-base ease-out-soft hover:bg-ember hover:text-white focus-visible:bg-ember focus-visible:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember motion-reduce:transition-none md:w-auto md:justify-start md:gap-0 md:py-3.25 md:text-pill"
     >
@@ -147,6 +186,7 @@ function WatchPill({
       </span>
       <span
         aria-hidden
+        data-watch
         className="hidden grid-cols-[0fr] transition-[grid-template-columns] duration-base ease-out-soft group-hover:grid-cols-[1fr] group-focus-visible:grid-cols-[1fr] motion-reduce:transition-none md:grid"
       >
         <span className="flex items-center overflow-hidden">
