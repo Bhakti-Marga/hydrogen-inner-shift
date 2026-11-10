@@ -43,8 +43,11 @@ export type HomeHeroSectionProps = {
   film: {
     src: string;
     title: string;
-    captions: {src: string; label: string; srcLang: string};
+    /** Omit when the words are already burnt into the picture. */
+    captions?: {src: string; label: string; srcLang: string};
   };
+  /** Silent loop behind the copy. The modal plays `film`. */
+  backgroundSrc: string;
   /** Still shown before the film loads, on small screens and with reduced motion. */
   poster: {src: string; width: number; height: number};
   programsLabel: string;
@@ -61,6 +64,7 @@ export function HomeHeroSection({
   primaryCta,
   filmCtaLabel,
   film,
+  backgroundSrc,
   poster,
   programsLabel,
   programs,
@@ -81,7 +85,7 @@ export function HomeHeroSection({
         width={800}
         height={458}
       />
-      <BackgroundFilm src={film.src} poster={poster} paused={filmOpen} />
+      <BackgroundFilm src={backgroundSrc} poster={poster} paused={filmOpen} />
 
       <div
         aria-hidden

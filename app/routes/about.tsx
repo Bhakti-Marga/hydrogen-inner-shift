@@ -60,7 +60,7 @@ export default function About() {
           },
           {
             name: 'Avish Lallbahadoor',
-            detail: 'Leadership transformation & nature based development',
+            detail: 'Leadership transformation & nature-based development',
             avatar: {
               src: '/images/pages/about/hero-avish.jpg',
               width: 160,
@@ -108,13 +108,17 @@ export default function About() {
               objectPosition: '62% 22%',
             },
             name: 'Avish Lallbahadoor',
-            labels: ['Founder, Leadership transformation & nature based development'],
+            labels: [
+              'Founder',
+              'Leadership transformation',
+              'Nature-based development',
+            ],
             quote:
-              '“In the quiet intensity of the wild, we discover what we’re truly capable of—and bring that resilience back into every aspect of life.”',
+              '“In the quiet intensity of the wild, we discover what we’re truly capable of – and bring that resilience back into every aspect of life.”',
             paragraphs: [
-              'With a background in investment and risk analysis in the banking world, Avish translates his analytical perspective into transformative leadership facilitation. Facilitator and seasoned wilderness guide, he bridges the gap between high-stakes strategic thinking and the raw, grounding lessons of the natural environment — helping people challenge assumptions, shift perspectives and unlock their potential.',
-              'Driven by a deep curiosity and a drive to push his boundaries, he has led solo expeditions and long-distance trails across three continents, often navigating challenging conditions and extremes of weather. He uses nature as the ultimate mirror, helping corporate leaders build resilience, adaptability, and emotional intelligence under pressure. His approach combines curiosity, reflection and purposeful challenge — creating space for people to test their assumptions, discover new perspectives and expand what they believe is possible.',
-              'Beyond his work, he spends his free time traveling, picking up new outdoor skills, and sharing his love for nature with his wife.',
+              'With a background in investment and risk analysis in banking, Avish brings an analytical perspective to leadership facilitation. A facilitator and seasoned wilderness guide, he bridges the gap between high-stakes strategic thinking and the raw, grounding lessons of the natural environment – helping people challenge assumptions, shift perspectives and grow as leaders.',
+              'Driven by deep curiosity and a desire to push his boundaries, he has led solo expeditions and walked long-distance trails across three continents, often in challenging conditions and extreme weather. He uses nature as a mirror, helping senior leaders build resilience, adaptability and emotional intelligence under pressure. His approach combines reflection and purposeful challenge, creating space for people to test what they take for granted and expand what they believe is possible.',
+              'In his free time, he travels, picks up new outdoor skills and shares his love of nature with his wife.',
             ],
           },
         ]}
@@ -124,52 +128,34 @@ export default function About() {
         image={{src: '/images/pages/about/hillside.jpg', width: 2791, height: 1600}}
         quotes={[
           {
-            id: 'hitesh-jogia',
-            quote:
-              'Avish was incredibly supportive throughout the transformation process and created a safe and encouraging space for meaningful conversations.',
-            cite: 'Hitesh Jogia, Senior Chartered Financial Planner, UK',
-          },
-          {
-            id: 'shraddha-oril',
-            quote:
-              'A special thank you to Avish for creating such a safe, warm, and genuine space throughout the programme. I truly appreciated the support, openness, and the way he guided us through the experience. Thank you for such a meaningful and transformative journey.',
-            cite: 'Shraddha Oril, Expert Accountant, Luxembourg',
-          },
-          {
             id: 'eliel-moura',
             quote:
-              'Ratna is that kind of person that makes you change the way you use to do things as professional. She makes you believe in something bigger than the normal life, and rethink your purpose of life.',
+              'Ratna is the kind of person who makes you change the way you used to do things as a professional. She makes you believe in something bigger than ordinary life and rethink your purpose.',
             cite: 'Eliel Moura, Quality & HSE Manager LATAM, Syensqo, Brazil',
           },
           {
-            id: 'daran-janecrk',
+            id: 'daran-janecek',
             quote:
-              'What I really appreciate about her skills is how she motivates, influences and challenges the status quo. She is able to successfully navigate within the system and add value to the business and achieve the targets.',
-            cite: 'Daran Janecrk, Global EHS Director, Kindeva Drug Delivery',
-          },
-          {
-            id: 'fabian-leuzinger',
-            quote:
-              'Ratna brings across in a light hearted way very serious and important matters. She “weaves” together all the important points, connecting the dots like an artist. She makes people feel at ease and makes them open up more than they ever have.',
-            cite: 'Fabian Leuzinger, Steering Board Member',
+              'What I really appreciate about her skills is how she motivates, influences and challenges the status quo. She is able to navigate the system successfully, add value to the business and achieve its targets.',
+            cite: 'Daran Janecek, Global EHS Director, Kindeva Drug Delivery, United States',
           },
           {
             id: 'roberto-arraya',
             quote:
-              'Ratna is as exemplary as it gets. Simply put, she just gets it. She understands people. She understands a need for change. She understands company culture and effortlessly relates it to Leadership Performance.',
+              'Ratna is as exemplary as it gets. Simply put, she just gets it. She understands people. She understands the need for change. She understands company culture and effortlessly relates it to leadership performance.',
             cite: 'Roberto Arraya, Senior Systems Engineer, Emerson, Germany',
           },
           {
             id: 'kelly-lanz',
             quote:
-              'She sees people not for who they are, but for who they can become, and is always ready and willing for the next challenge that comes her way. She has the ability to engage all types of people, and create meaningful links that generate group cohesiveness.',
-            cite: 'Kelly Lanz, Founder, The Lanz Connection',
+              'She sees people not for who they are, but for who they can become, and is always ready and willing to take on the next challenge that comes her way. She has the ability to engage all types of people and create meaningful connections that build group cohesion.',
+            cite: 'Kelly Lanz, Founder, The Lanz Connection, United States',
           },
           {
-            id: 'yash-pankania',
+            id: 'yash-pankhania',
             quote:
-              'The quality of the facilitation and delivery was incredible. Each module was thoughtfully structured, taking us on a journey rather than simply delivering information. Avish constantly engaged us, asked questions and encouraged us to reflect, so we always felt involved rather than being spoken at.',
-            cite: 'Yash Pankania, IBM Sales Specialist',
+              'The quality of the facilitation and delivery was incredible. Each module was thoughtfully structured, taking us on a journey rather than simply delivering information. Ratna constantly engaged us, asked questions and encouraged us to reflect, so we always felt involved rather than spoken at.',
+            cite: 'Yash Pankhania, Sales Specialist, IBM, United Kingdom',
           },
         ]}
       />

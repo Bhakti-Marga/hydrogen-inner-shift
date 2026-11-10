@@ -32,14 +32,12 @@ const TESTIMONIALS = [
 const PILL_AVATAR = {src: '/images/pages/home/hero-pill-avatar.jpg'};
 
 const FOUNDERS_FILM = {
-  src: '/videos/home/founders-film.mp4',
+  src: '/videos/home/founders.mp4',
   title: 'Inner Shift — the founders’ film',
-  captions: {
-    src: '/videos/home/founders-film.en.vtt',
-    label: 'English',
-    srcLang: 'en',
-  },
 };
+
+/** Short silent loop behind the homepage hero. The modal keeps the founders’ film. */
+const HERO_LOOP = '/videos/home/hero-loop.mp4';
 
 const FAQS = [
   {
@@ -171,6 +169,7 @@ export default function Homepage() {
         primaryCta={{label: 'Start the conversation', href: CONTACT_FORM_HREF}}
         filmCtaLabel="Watch the film"
         film={FOUNDERS_FILM}
+        backgroundSrc={HERO_LOOP}
         poster={{src: POSTER, width: 1918, height: 1100}}
         programsLabel="Our programs:"
         programs={[
@@ -269,11 +268,6 @@ export default function Homepage() {
           video: {
             src: `/videos/home/testimonials/${slug}.mp4`,
             title: `Inner Shift — ${name}’s testimonial`,
-            captions: {
-              src: `/videos/home/testimonials/${slug}.en.vtt`,
-              label: 'English',
-              srcLang: 'en',
-            },
             orientation: 'portrait',
           },
         }))}

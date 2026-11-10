@@ -37,7 +37,7 @@ const TESTIMONIALS = [
     quote:
       '“You are a good leader if you are a good human being.”',
     attribution: 'Francesco Cecchni · Company owner, Italy',
-    duration: '0:47',
+    duration: '0:45',
   },
   {
     slug: 'tommaso',
@@ -127,11 +127,6 @@ export default function Results() {
           video: {
             src: `/videos/results/${slug}.mp4`,
             title: `Inner Shift — ${name}’s testimonial`,
-            captions: {
-              src: `/videos/home/testimonials/${slug}.en.vtt`,
-              label: 'English',
-              srcLang: 'en',
-            },
           },
         }))}
       />
