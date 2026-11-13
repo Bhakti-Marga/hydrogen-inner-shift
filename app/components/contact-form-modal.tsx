@@ -11,8 +11,8 @@ const TITLE_ID = 'contact-form-title';
 
 /**
  * "Start a conversation" form in a native `<dialog>`, in three steps that are
- * validated one at a time and posted together to `/api/contact`. The label
- * of the link that opened it is sent as `source`.
+ * validated one at a time and posted together to `/api/contact`. The visible
+ * label of the link that opened it is sent as `source`.
  */
 export function ContactFormModal() {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -56,7 +56,7 @@ export function ContactFormModal() {
       const link = event.target.closest(`a[href="${CONTACT_FORM_HREF}"]`);
       if (!link) return;
       event.preventDefault();
-      setSource(link.textContent?.trim() ?? '');
+      setSource(linkLabel(link));
       setOpen(true);
     };
 
@@ -255,6 +255,23 @@ export function ContactFormModal() {
       </div>
     </dialog>
   );
+}
+
+/** Skips `aria-hidden` copies, such as the header pill's width-sizing labels. */
+function linkLabel(link: Element) {
+  const parts: string[] = [];
+  const walk = (node: Node) => {
+    if (node instanceof Element && node.getAttribute('aria-hidden') === 'true') {
+      return;
+    }
+    if (node.nodeType === Node.TEXT_NODE) {
+      parts.push(node.textContent ?? '');
+      return;
+    }
+    for (const child of node.childNodes) walk(child);
+  };
+  walk(link);
+  return parts.join('').replace(/\s+/g, ' ').trim();
 }
 
 const inputClasses =

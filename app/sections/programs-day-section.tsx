@@ -46,7 +46,7 @@ export function ProgramsDaySection({
       tone="glacier"
       className={`px-3 md:px-6${className ? ` ${className}` : ''}`}
     >
-      <div className="relative mb-3 md:mb-6 lg:pb-43.5">
+      <div className="relative lg:pb-43.5">
         <div className="relative isolate flex min-h-160 flex-col overflow-hidden rounded-panel text-white lg:min-h-195">
         <img
           src={image.src}
