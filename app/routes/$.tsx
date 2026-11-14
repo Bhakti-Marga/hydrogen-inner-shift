@@ -1,5 +1,6 @@
 import {data} from 'react-router';
 import type {Route} from './+types/$';
+import {shareImageMeta} from '~/lib/share-image';
 import {NotFoundSection} from '~/sections/not-found-section';
 
 const TITLE = 'Page not found — Inner Shift';
@@ -9,7 +10,8 @@ export function loader() {
   return data(null, {status: 404});
 }
 
-export const meta: Route.MetaFunction = () => [
+export const meta: Route.MetaFunction = ({matches}) => [
+  ...shareImageMeta(matches),
   {title: TITLE},
   {name: 'robots', content: 'noindex'},
 ];

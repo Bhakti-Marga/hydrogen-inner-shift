@@ -1,4 +1,5 @@
 import type {Route} from './+types/mission';
+import {shareImageMeta} from '~/lib/share-image';
 import {
   CONTACT_FORM_HREF,
   ContactFormModal,
@@ -16,7 +17,8 @@ const DESCRIPTION =
 
 const FIRE = '/images/pages/mission/mosaic-fire.jpg';
 
-export const meta: Route.MetaFunction = () => [
+export const meta: Route.MetaFunction = ({matches}) => [
+  ...shareImageMeta(matches),
   {title: TITLE},
   {name: 'description', content: DESCRIPTION},
   {property: 'og:title', content: TITLE},

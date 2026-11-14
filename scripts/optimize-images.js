@@ -37,6 +37,13 @@ const SKIP_UNDER_BYTES = 200 * 1024;
  * already smaller than the cap are only recompressed, never enlarged.
  */
 const RESIZE_RULES = [
+  // Open Graph share image: 1200×630 fireside circle (public/images/og.jpg).
+  {
+    pattern: /^og\.jpe?g$/,
+    maxWidth: 1200,
+    maxHeight: 630,
+    quality: 90,
+  },
   // ── Home (public/images/pages/home) ───────────────────────────────────────
   // Full-bleed hero poster shown before / instead of the background film.
   // Photographic with soft shadows, so it ships as JPG — palette PNG would band.

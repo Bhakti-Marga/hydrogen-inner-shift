@@ -1,4 +1,5 @@
 import type {Route} from './+types/programs';
+import {shareImageMeta} from '~/lib/share-image';
 import {
   CONTACT_FORM_HREF,
   ContactFormModal,
@@ -18,7 +19,8 @@ const DESCRIPTION =
 
 const HERO = '/images/pages/programs/hero.jpg';
 
-export const meta: Route.MetaFunction = () => [
+export const meta: Route.MetaFunction = ({matches}) => [
+  ...shareImageMeta(matches),
   {title: TITLE},
   {name: 'description', content: DESCRIPTION},
   {property: 'og:title', content: TITLE},

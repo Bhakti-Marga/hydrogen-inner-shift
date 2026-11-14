@@ -1,4 +1,5 @@
 import type {Route} from './+types/why';
+import {shareImageMeta} from '~/lib/share-image';
 import {
   CONTACT_FORM_HREF,
   ContactFormModal,
@@ -17,7 +18,8 @@ const TITLE = 'Why — Inner Shift';
 const DESCRIPTION =
   'The leadership crisis is a human gap: what prevents leaders and teams from using the potential they already have.';
 
-export const meta: Route.MetaFunction = () => [
+export const meta: Route.MetaFunction = ({matches}) => [
+  ...shareImageMeta(matches),
   {title: TITLE},
   {name: 'description', content: DESCRIPTION},
   {property: 'og:title', content: TITLE},

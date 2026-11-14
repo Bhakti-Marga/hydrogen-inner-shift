@@ -1,11 +1,13 @@
 import type {Route} from './+types/confirmation';
+import {shareImageMeta} from '~/lib/share-image';
 import {ConfirmationSection} from '~/sections/confirmation-section';
 
 const TITLE = 'Your request is in — Inner Shift';
 
 const BACKGROUND = '/images/pages/confirmation/background.jpg';
 
-export const meta: Route.MetaFunction = () => [
+export const meta: Route.MetaFunction = ({matches}) => [
+  ...shareImageMeta(matches),
   {title: TITLE},
   {name: 'robots', content: 'noindex'},
 ];

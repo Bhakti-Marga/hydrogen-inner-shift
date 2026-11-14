@@ -9,10 +9,16 @@ import {
   Scripts,
   ScrollRestoration,
 } from 'react-router';
+import type {Route} from './+types/root';
 import {BhaktiHubPixel} from '~/components/bhakti-hub-pixel';
 import {SiteHeader} from '~/components/site-header';
 import favicon from '~/assets/brand/favicon.png';
 import tailwindStyles from '~/styles/tailwind.css?url';
+
+/** Origin for the absolute share-image URL. */
+export function loader({request}: Route.LoaderArgs) {
+  return {origin: new URL(request.url).origin};
+}
 
 /**
  * The stylesheet is added in the Layout component to prevent a bug in
