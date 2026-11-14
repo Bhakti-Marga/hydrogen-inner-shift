@@ -1,4 +1,5 @@
 import {useNonce} from '@shopify/hydrogen';
+import {useEffect} from 'react';
 import {
   Outlet,
   useRouteError,
@@ -9,7 +10,8 @@ import {
   ScrollRestoration,
 } from 'react-router';
 import {BhaktiHubPixel} from '~/components/bhakti-hub-pixel';
-import favicon from '~/assets/brand/favicon.svg';
+import {SiteHeader} from '~/components/site-header';
+import favicon from '~/assets/brand/favicon.png';
 import tailwindStyles from '~/styles/tailwind.css?url';
 
 /**
@@ -26,7 +28,7 @@ export function links() {
       type: 'font/woff2',
       crossOrigin: 'anonymous',
     },
-    {rel: 'icon', type: 'image/svg+xml', href: favicon},
+    {rel: 'icon', type: 'image/png', href: favicon},
   ];
 }
 
@@ -34,7 +36,7 @@ export function Layout({children}: {children?: React.ReactNode}) {
   const nonce = useNonce();
 
   return (
-    <html lang="en">
+    <html lang="en" className="js">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -54,7 +56,19 @@ export function Layout({children}: {children?: React.ReactNode}) {
 }
 
 export default function App() {
-  return <Outlet />;
+  // Entrances are held (see `html.js:not(.go)` in the stylesheet) until after
+  // hydration. Starting them in the server HTML makes them finish, then play
+  // again when React attaches.
+  useEffect(() => {
+    document.documentElement.classList.add('go');
+  }, []);
+
+  return (
+    <>
+      <SiteHeader />
+      <Outlet />
+    </>
+  );
 }
 
 export function ErrorBoundary() {
@@ -71,7 +85,7 @@ export function ErrorBoundary() {
 
   return (
     <main className="flex min-h-svh flex-col items-start justify-center gap-4 px-6 xl:px-10">
-      <p className="font-mono text-label uppercase tracking-label text-mist">
+      <p className="text-eyebrow font-medium uppercase text-mist">
         Error {errorStatus}
       </p>
       <h1 className="text-hero uppercase md:text-hero-md">

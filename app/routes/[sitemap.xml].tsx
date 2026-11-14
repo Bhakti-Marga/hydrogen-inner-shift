@@ -1,6 +1,6 @@
 import type {Route} from './+types/[sitemap.xml]';
 
-const PAGE_PATHS = ['/'];
+const PAGE_PATHS = ['/', '/programs', '/mission', '/about', '/why', '/results'];
 
 export function loader({request}: Route.LoaderArgs) {
   const {origin} = new URL(request.url);

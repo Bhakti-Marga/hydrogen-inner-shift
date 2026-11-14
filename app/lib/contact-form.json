@@ -1,0 +1,171 @@
+{
+  "id": "start-a-conversation",
+  "title": "Start a conversation",
+  "description": "Tell us enough to make the first call useful.",
+  "endpoint": "/api/contact",
+  "method": "POST",
+  "encoding": "application/x-www-form-urlencoded",
+  "relay": {
+    "url": "https://bhaktihub.io/api/ext/v1/forms/start-a-conversation/submissions",
+    "renames": {"teamSize": "team_size"},
+    "honeypot": "website"
+  },
+  "steps": [
+    {
+      "id": "about-you",
+      "submitLabel": "Continue",
+      "fields": [
+        {
+          "name": "name",
+          "type": "text",
+          "label": "Your name",
+          "placeholder": "First and last name",
+          "required": true,
+          "maxLength": 120,
+          "autocomplete": "name",
+          "half": true
+        },
+        {
+          "name": "role",
+          "type": "text",
+          "label": "Your role",
+          "placeholder": "e.g. CEO, Head of People",
+          "required": false,
+          "maxLength": 120,
+          "autocomplete": "organization-title",
+          "half": true
+        },
+        {
+          "name": "email",
+          "type": "email",
+          "label": "Work email",
+          "placeholder": "you@company.com",
+          "required": true,
+          "maxLength": 254,
+          "autocomplete": "email"
+        },
+        {
+          "name": "company",
+          "type": "text",
+          "label": "Company",
+          "placeholder": "Company name",
+          "required": false,
+          "maxLength": 160,
+          "autocomplete": "organization"
+        }
+      ]
+    },
+    {
+      "id": "your-team",
+      "submitLabel": "Continue",
+      "fields": [
+        {
+          "name": "teamSize",
+          "type": "select",
+          "label": "Team size",
+          "placeholder": "Select...",
+          "required": false,
+          "half": true,
+          "options": [
+            {"value": "just-me", "label": "Just me"},
+            {"value": "2-5", "label": "2–5"},
+            {"value": "6-12", "label": "6–12"},
+            {"value": "13-25", "label": "13–25"},
+            {"value": "26-plus", "label": "More than 25"}
+          ]
+        },
+        {
+          "name": "industry",
+          "type": "text",
+          "label": "Industry",
+          "placeholder": "e.g. SaaS, manufacturing",
+          "required": false,
+          "maxLength": 120,
+          "half": true
+        },
+        {
+          "name": "gaps",
+          "type": "checkboxes",
+          "label": "What's the gap you sense?",
+          "description": "Multiple choice: sent as one `gaps` entry per selected option.",
+          "required": false,
+          "options": [
+            {"value": "engagement-slipping", "label": "Engagement is slipping"},
+            {
+              "value": "conflict-under-the-surface",
+              "label": "Conflict under the surface"
+            },
+            {
+              "value": "good-people-leaving",
+              "label": "Good people are leaving"
+            },
+            {"value": "leaders-not-aligned", "label": "Leaders aren’t aligned"},
+            {"value": "growing-fast", "label": "We’re growing fast"},
+            {"value": "trust-after-reorg", "label": "Trust after reorg"},
+            {"value": "hard-to-name", "label": "Hard to name yet"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "starting-point",
+      "submitLabel": "Request the consultation",
+      "fields": [
+        {
+          "name": "program",
+          "type": "radio",
+          "label": "Where would you like to start?",
+          "required": false,
+          "options": [
+            {
+              "value": "full-immersion",
+              "label": "Full Immersion",
+              "description": "Six month · Three nature immersions · Support in between"
+            },
+            {
+              "value": "day-immersion",
+              "label": "Day Immersion",
+              "description": "One of our three shorter formats · Feel the shift before committing"
+            },
+            {
+              "value": "not-sure",
+              "label": "Not sure yet",
+              "description": "That’s exactly what the consultation is for"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "hiddenFields": [
+    {
+      "name": "source",
+      "description": "Label of the button that opened the form, e.g. \"Request a quote\" or \"Let’s talk\".",
+      "maxLength": 120
+    },
+    {
+      "name": "page",
+      "description": "Path of the page the form was sent from, e.g. \"/\".",
+      "maxLength": 300
+    }
+  ],
+  "backLabel": "Back",
+  "closeLabel": "Close",
+  "success": {
+    "title": "Thank you.",
+    "description": "We will reply within two working days."
+  },
+  "errorMessage": "Something went wrong sending your request. Please try again.",
+  "examplePayload": {
+    "name": "Jane Doe",
+    "role": "Head of People",
+    "email": "jane@company.com",
+    "company": "Acme",
+    "team_size": "6-12",
+    "industry": "SaaS",
+    "gaps": ["engagement-slipping", "leaders-not-aligned"],
+    "program": "full-immersion",
+    "source": "Request a quote",
+    "page": "/"
+  }
+}
