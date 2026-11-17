@@ -11,6 +11,8 @@ import {
 
 export type HomeTestimonial = {
   name: string;
+  /** Role shown under the name. */
+  role?: string;
   video: VideoModalVideo;
 };
 
@@ -107,6 +109,7 @@ export function HomeTestimonialsSection({
               <li key={testimonial.name} className="md:shrink-0">
                 <WatchPill
                   name={testimonial.name}
+                  role={testimonial.role}
                   watchLabel={watchLabel}
                   onClick={() => play(testimonial.video)}
                 />
@@ -164,10 +167,12 @@ function settlePill(button: HTMLButtonElement) {
  */
 function WatchPill({
   name,
+  role,
   watchLabel,
   onClick,
 }: {
   name: string;
+  role?: string;
   watchLabel: string;
   onClick: () => void;
 }) {
@@ -175,7 +180,7 @@ function WatchPill({
     <button
       type="button"
       aria-haspopup="dialog"
-      aria-label={`${watchLabel} ${name}`}
+      aria-label={role ? `${watchLabel} ${name}, ${role}` : `${watchLabel} ${name}`}
       onMouseEnter={(event) => settlePill(event.currentTarget)}
       onFocus={(event) => settlePill(event.currentTarget)}
       onClick={onClick}
@@ -195,7 +200,10 @@ function WatchPill({
           <span className="w-1 shrink-0" />
         </span>
       </span>
-      {name}
+      <span className="flex flex-col items-center leading-tight md:items-start">
+        <span>{name}</span>
+        {role ? <span className="text-fine font-normal">{role}</span> : null}
+      </span>
     </button>
   );
 }

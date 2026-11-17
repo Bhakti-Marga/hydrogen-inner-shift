@@ -33,35 +33,6 @@ export const links: Route.LinksFunction = () => [
 export default function Mission() {
   return (
     <main className="min-h-svh bg-white text-ink">
-      <MissionHeroSection
-        fire={{
-          src: FIRE,
-          alt: 'Friends and a dog gathered around a fire pit at dusk',
-          width: 750,
-          height: 1125,
-        }}
-        mug={{
-          src: '/images/pages/mission/mosaic-mug.jpg',
-          alt: 'A woman holding a mug beside a campfire',
-          width: 896,
-          height: 1344,
-        }}
-        flask={{
-          src: '/images/pages/mission/mosaic-flask.jpg',
-          alt: 'Coffee poured from a flask into a cup on a mossy stump',
-          width: 735,
-          height: 1056,
-        }}
-        runners={{
-          src: '/images/pages/mission/mosaic-runners.jpg',
-          alt: 'Four people running together on a sunlit trail',
-          width: 1199,
-          height: 978,
-        }}
-        stepOut={{title: 'STEP OUT', text: 'Leave the familiar environment'}}
-        terrain="Terrain changes people faster than talk does"
-        mirror="Use nature as your mirror"
-      />
       <MissionStatementSection
         avatar={{
           src: '/images/pages/mission/statement-avatar.jpg',
@@ -143,7 +114,6 @@ export default function Mission() {
             role: 'Co-founder',
             bio: 'Decades of leadership and culture-change work across sectors and continents. Ratna designs and holds the journey — and trains the facilitators who carry it.',
             quote: '“When a leader speaks from the heart, everything changes.”',
-            note: 'Portrait to come',
             image: {
               src: '/images/pages/mission/ratna.jpg',
               alt: 'Ratna Morjaria seated on a sofa, smiling',
@@ -156,7 +126,6 @@ export default function Mission() {
             role: 'Co-founder',
             bio: 'A background in leadership, transformation and nature-based learning. Avish brings the structure, the science and the calm that make the deep work safe.',
             quote: '“The work is not to become someone else. It is to lead from who you already are.”',
-            note: 'Portrait to come',
             image: {
               src: '/images/pages/mission/avish.jpg',
               alt: 'Avish Lallbahadoor sitting on steps, looking aside',
@@ -165,6 +134,35 @@ export default function Mission() {
             },
           },
         ]}
+      />
+      <MissionHeroSection
+        fire={{
+          src: FIRE,
+          alt: 'Friends and a dog gathered around a fire pit at dusk',
+          width: 750,
+          height: 1125,
+        }}
+        mug={{
+          src: '/images/pages/mission/mosaic-mug.jpg',
+          alt: 'A woman holding a mug beside a campfire',
+          width: 896,
+          height: 1344,
+        }}
+        flask={{
+          src: '/images/pages/mission/mosaic-flask.jpg',
+          alt: 'Coffee poured from a flask into a cup on a mossy stump',
+          width: 735,
+          height: 1056,
+        }}
+        runners={{
+          src: '/images/pages/mission/mosaic-runners.jpg',
+          alt: 'Four people running together on a sunlit trail',
+          width: 1199,
+          height: 978,
+        }}
+        stepOut={{title: 'STEP OUT', text: 'Leave the familiar environment'}}
+        terrain="Terrain changes people faster than talk does"
+        mirror="Use nature as your mirror"
       />
       <MissionCloseSection
         pill={{

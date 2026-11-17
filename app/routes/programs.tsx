@@ -46,7 +46,7 @@ export default function Programs() {
         image={{src: HERO, width: 2721, height: 1536}}
         facts={[
           '6 to 12 senior leaders',
-          '3 immersions × 4 days',
+          '6 months Journey',
           'Residential, in nature',
           'Up to six months, shaped with you',
         ]}
@@ -61,7 +61,7 @@ export default function Programs() {
           description:
             'Discovery, three residential immersions of four days each in nature, and integration support long after. For leadership teams ready to commit to real change.',
           facts: [
-            '3 immersions × 4 days',
+            '6 months Journey',
             '6–12 senior leaders',
             'Up to 6 months, plus integration',
           ],
@@ -98,22 +98,22 @@ export default function Programs() {
           {
             number: '01',
             title: 'Discovery',
-            text: 'Before the first immersion, we meet the team, listen and understand where it stands today — a 360 assessment and quiet one-to-one conversations, so we start from observed patterns, not self-reported sentiment.',
+            text: 'Before the first immersion meet the team. We identify the current state and listen to the desired state to shape the fullest journey to close the human gap.',
           },
           {
             number: '02',
-            title: 'Immersion 1: Beliefs',
-            text: 'The team steps out into nature and surfaces the assumptions shaping how it works.',
+            title: 'Beliefs',
+            text: 'The team steps out into nature and surfaces the assumptions limiting the potential to lead from how they want to shape the future.',
           },
           {
             number: '03',
-            title: 'Immersion 2: Values',
-            text: 'The team returns, reflects on what it tested at work, and aligns around what truly matters.',
+            title: 'Values',
+            text: 'The team returns, reflects and aligns with the values that creates leadership presence and a strong foundation for growth.',
           },
           {
             number: '04',
-            title: 'Immersion 3: Identity',
-            text: 'The deepest layer: who each leader is being, and who the team chooses to become.',
+            title: 'Identity',
+            text: 'The deepest layer: each person anchors into the inner shift with courage to lead fully in their humanness and fullest potential.',
           },
           {
             number: '05',
@@ -296,7 +296,7 @@ export default function Programs() {
         heading={'You’ve felt the shape of it.\nThe rest is one conversation.'}
         primary={{label: 'Let’s talk', href: CONTACT_FORM_HREF}}
         secondary={{
-          label: 'Download the Full Programme Overview',
+          label: 'Download more program details',
           href: CONTACT_FORM_HREF,
         }}
         image={{

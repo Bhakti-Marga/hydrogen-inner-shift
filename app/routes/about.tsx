@@ -46,7 +46,7 @@ export default function About() {
       <AboutHeroSection
         headline="Two very different paths. One shared belief: the hard part of leadership was never the part you can see."
         intro="We couldn't find anyone building leadership work for that hidden layer — so we built it ourselves. This is who's actually running it."
-        cta={{label: 'Book a consultation', href: CONTACT_FORM_HREF}}
+        cta={{label: 'Book a 90 min free consultation', href: CONTACT_FORM_HREF}}
         filmCtaLabel="Watch the film"
         film={FOUNDERS_FILM}
         image={{src: HERO, width: 1669, height: 942}}
@@ -88,10 +88,23 @@ export default function About() {
               objectPosition: 'center 28%',
             },
             name: 'Ratna Morjaria',
-            labels: ['Transformation & leadership consultant'],
+            labels: ['Co-founder', 'Transformation & leadership consultant'],
+            links: [
+              {
+                label: 'LinkedIn',
+                href: 'https://www.linkedin.com/in/ratna-morjaria',
+              },
+              {
+                label: 'Below the Waterline on Spotify',
+                href: 'https://open.spotify.com/show/6OKTP6yQpdyFgviUBeDgy3',
+              },
+              {
+                label: 'Below the Waterline on Apple Podcasts',
+                href: 'https://podcasts.apple.com/us/podcast/below-the-waterline/id1894043420',
+              },
+            ],
             paragraphs: [
-              "Ratna spent her career on the operational and compliance side of the chemical industry — safety, environmental standards, culture change, the systems that keep a large organisation running without anyone noticing they're there. As Global Culture Director, she led culture transformation across five regions. She's a Certified Culture Design Consultant.",
-              "As founder of Dharma Awakenings, she's since brought that approach to clients across a range of industries — helping organisations strengthen the human foundation everything else, technology included, depends on. Her approach connects strategy, culture, and human potential, bringing the architecture that helps a team navigate real operational pressure, not just a workshop.",
+              'Ratna spent her career on the operational and compliance side of the chemical industry — safety, environmental standards, culture change, the systems that keep a large organisation running without anyone noticing they’re there. As Global Culture Director, she led culture transformation across five regions. Again and again she saw the same pattern: teams had the strategy, the skills and the frameworks, yet what held them back lay below the surface — in beliefs, assumptions and unspoken stories about trust and belonging. That human gap is what she now works on through Inner Shift, helping leadership teams make the invisible visible and build the foundation that holds under real operational pressure, not just in a workshop.',
             ],
           },
           {
@@ -114,6 +127,12 @@ export default function About() {
               'Founder',
               'Leadership transformation',
               'Nature-based development',
+            ],
+            links: [
+              {
+                label: 'LinkedIn',
+                href: 'https://www.linkedin.com/in/avish-lallbahadoor',
+              },
             ],
             quote:
               '“In the quiet intensity of the wild, we discover what we’re truly capable of – and bring that resilience back into every aspect of life.”',
@@ -203,22 +222,10 @@ export default function About() {
         quotes={[
           {
             quote:
-              '“Without it, it would have been difficult — or people may not even have wanted that.”',
-            body: 'Over a course of multiple 2-day workshops, you created appetite and “getting started” for a new vibe, a new possible culture. On top, you created an atmosphere of people talking to each other — who normally don’t talk so easily together. What stood out for me was your ability to function as a connector, bringing different characters together.',
-            cite: 'Fabian Leuzinger, CEO, Wahledmühle',
+              '“As one of the CEO’s responsible globally for media and communication across a diverse, international team, I had the opportunity to collaborate with Ratna.”',
+            body: 'Within just a few sessions, we created an environment of trust, awareness, and open communication, bridging cultural and linguistic differences between remote and on-site teams. Ratna guided us through deep practices of listening, feedback, empowerment, and transformation, using models such as the iceberg principle to reveal what drives human interaction beneath the surface. What stood out most to me was how Ratna embodies the essence of putting humans first. She brings together knowledge, compassion, and structure in a truly unique and extraordinary way, enabling people and organizations to connect and grow authentically.',
+            cite: 'Jan Philip Zehner',
           },
-          {
-            quote:
-              '“A business performance assurance coach, not just a personal development tool.”',
-            body: 'Not just a personal development tool but a business performance assurance coach for me. All this I do with the safety of feeling of not being judged. I see this impacting performance of my business.',
-            cite: 'Vijaykumar Rangaraju, Chief Mission Officer, ProClime Services',
-          },
-        ]}
-        stats={[
-          {text: '100,000+', label: 'Individuals assessed'},
-          {count: 39, label: 'Organisations'},
-          {count: 15, suffix: '+', label: 'Countries'},
-          {text: '0.92', label: 'Reliability coefficient, core assessment'},
         ]}
       />
       <AboutCloseSection

@@ -46,7 +46,7 @@ export function SiteHeader() {
         label:
           pathname === '/mission' || pathname === '/programs'
             ? 'Start a conversation'
-            : 'Book a consultation',
+            : 'Book a 90 min free consultation',
         href: CONTACT_FORM_HREF,
       }}
     />

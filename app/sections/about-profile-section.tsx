@@ -9,12 +9,18 @@ type Photo = {
   objectPosition?: string;
 };
 
+type FounderLink = {
+  label: string;
+  href: string;
+};
+
 type FounderProfile = {
   portrait: Photo;
   photo: Photo;
   name: string;
   /** Uppercase lines under the name. */
   labels: string[];
+  links?: FounderLink[];
   quote?: string;
   paragraphs: string[];
 };
@@ -68,7 +74,7 @@ function FounderCard({person, order}: {person: FounderProfile; order: number}) {
             ? {objectPosition: person.photo.objectPosition}
             : undefined
         }
-        className="hidden object-cover motion-reduce:transition-none lg:absolute lg:inset-0 lg:z-10 lg:block lg:h-full lg:w-full lg:transition-opacity lg:duration-[var(--duration-reveal)] lg:ease-out-soft lg:[--tw-duration:var(--duration-reveal)] lg:[--tw-ease:var(--ease-out-soft)] lg:group-focus-within/profile:opacity-0 lg:group-focus-visible/profile:opacity-0 lg:group-hover/profile:opacity-0 motion-safe:group-data-[state=run]/reveal:animate-settle"
+        className="hidden object-cover motion-reduce:transition-none lg:absolute lg:inset-0 lg:z-10 lg:block lg:h-full lg:w-full lg:transition-opacity lg:duration-[var(--duration-reveal)] lg:ease-out-soft lg:[--tw-duration:var(--duration-reveal)] lg:[--tw-ease:var(--ease-out-soft)] lg:group-focus-within/profile:pointer-events-none lg:group-focus-within/profile:opacity-0 lg:group-focus-visible/profile:opacity-0 lg:group-hover/profile:pointer-events-none lg:group-hover/profile:opacity-0 motion-safe:group-data-[state=run]/reveal:animate-settle"
       />
       <div className="flex flex-1 flex-col bg-cloud px-8 py-10 md:px-10">
         <div className="flex flex-1 flex-col motion-reduce:transition-none lg:translate-y-3 lg:transition-transform lg:duration-[var(--duration-reveal)] lg:ease-out-soft lg:[--tw-duration:var(--duration-reveal)] lg:[--tw-ease:var(--ease-out-soft)] lg:group-focus-within/profile:translate-y-0 lg:group-focus-visible/profile:translate-y-0 lg:group-hover/profile:translate-y-0">
@@ -94,6 +100,22 @@ function FounderCard({person, order}: {person: FounderProfile; order: number}) {
               </span>
             ))}
           </p>
+          {person.links?.length ? (
+            <ul className="mt-6 flex flex-col items-start gap-2">
+              {person.links.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="border-b border-pine/35 text-role text-pine uppercase transition-colors duration-fast hover:border-pine"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : null}
           {person.quote ? (
             <p className="mt-10 max-w-134 text-body text-ink/80 italic">{person.quote}</p>
           ) : null}

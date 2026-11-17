@@ -5,7 +5,6 @@ type Person = {
   role: string;
   bio: string;
   quote: string;
-  note: string;
   image: {src: string; alt: string; width: number; height: number};
 };
 
@@ -43,7 +42,7 @@ export function MissionTeamSection({
       <div className="mt-10 grid gap-10 md:mt-12 md:grid-cols-2 md:gap-8">
         {people.map((person, index) => (
           <Reveal key={person.name} order={index} className="flex flex-col gap-6">
-            <div className="relative aspect-square overflow-hidden rounded-panel">
+            <div className="relative aspect-square w-full max-w-sm overflow-hidden rounded-panel">
               <img
                 src={person.image.src}
                 alt={person.image.alt}
@@ -67,7 +66,6 @@ export function MissionTeamSection({
             <p className="max-w-md text-banner-lead text-ink italic md:text-banner-lead-md">
               {person.quote}
             </p>
-            <p className="text-eyebrow font-medium text-ink/35 uppercase">{person.note}</p>
           </Reveal>
         ))}
       </div>

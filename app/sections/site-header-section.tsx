@@ -5,7 +5,7 @@ import {Button, Container, Section, Wordmark, type SectionPadding} from '~/ui';
 type NavLink = {label: string; href: string; current?: boolean};
 
 /** Both header labels, so the pill stays one width and the links don't shift. */
-const CTA_WIDTH = ['Start a conversation', 'Book a consultation'];
+const CTA_WIDTH = ['Start a conversation', 'Book a 90 min free consultation'];
 
 export type SiteHeaderSectionProps = {
   links: NavLink[];

@@ -32,7 +32,7 @@ export default function Why() {
       <WhyHeroSection
         headline="It's not a skills gap. It's a human gap."
         intro="Global engagement has fallen for two years running. Manager engagement is falling faster — down from 27% to 22% in the last year alone. The people meant to bring teams to life are running out of it themselves."
-        cta={{label: 'Book a consultation', href: CONTACT_FORM_HREF}}
+        cta={{label: 'Book a 90 min free consultation', href: CONTACT_FORM_HREF}}
         photos={[
           {
             src: '/images/pages/why/polaroid-laptop.jpg',

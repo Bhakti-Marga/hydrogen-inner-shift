@@ -22,12 +22,20 @@ const DESCRIPTION =
 const POSTER = '/images/pages/home/hero-founders.jpg';
 
 const TESTIMONIALS = [
-  {name: 'Yash Pankhania', slug: 'josh'},
-  {name: 'Shraddha Lallbahdoor', slug: 'shweta'},
-  {name: 'Gosia Reis', slug: 'gosha'},
-  {name: 'Francesco Cecchni', slug: 'francesco'},
-  {name: 'Christian Jaerschke', slug: 'christian'},
-  {name: 'Tommaso Caini', slug: 'tommaso'},
+  {name: 'Yash Pankhania', role: 'Tech sales, London', slug: 'josh'},
+  {
+    name: 'Shraddha Lallbahdoor',
+    role: 'Adviser to senior leadership, Luxembourg',
+    slug: 'shweta',
+  },
+  {name: 'Gosia Reis', role: 'Organisation development expert', slug: 'gosha'},
+  {name: 'Francesco Cecchni', role: 'Company owner, Italy', slug: 'francesco'},
+  {
+    name: 'Christian Jaerschke',
+    role: 'High-performance coach, Germany',
+    slug: 'christian',
+  },
+  {name: 'Tommaso Caini', role: 'Startup co-founder, Italy', slug: 'tommaso'},
 ];
 
 const PILL_AVATAR = {src: '/images/pages/home/hero-pill-avatar.jpg'};
@@ -265,8 +273,9 @@ export default function Homepage() {
         }}
         listLabel="Watch full testimonials:"
         watchLabel="Watch:"
-        testimonials={TESTIMONIALS.map(({name, slug}) => ({
+        testimonials={TESTIMONIALS.map(({name, role, slug}) => ({
           name,
+          role,
           video: {
             src: `/videos/home/testimonials/${slug}.mp4`,
             title: `Inner Shift — ${name}’s testimonial`,
@@ -275,7 +284,7 @@ export default function Homepage() {
         }))}
       />
       <HomeAudienceSection
-        heading="Who it is for"
+        heading="Who is this for?"
         groups={[
           {
             heading: 'Leaders & entrepreneurs who…',
@@ -313,7 +322,7 @@ export default function Homepage() {
           description:
             'Discovery, three residential immersions of four days each in nature, and integration support long after. For leadership teams ready to commit to real change.',
           facts: [
-            '3 immersions × 4 days',
+            '6 months Journey',
             '6–12 senior leaders',
             'Up to 6 months, plus integration',
           ],

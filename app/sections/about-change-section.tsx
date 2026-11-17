@@ -1,4 +1,4 @@
-import {AvatarPill, Container, CountUp, Reveal, Section, type SectionPadding} from '~/ui';
+import {AvatarPill, Container, Reveal, Section, type SectionPadding} from '~/ui';
 
 type Quote = {
   quote: string;
@@ -6,29 +6,19 @@ type Quote = {
   cite: string;
 };
 
-type Stat = {
-  /** Shown as-is when `count` is omitted, for figures like 0.92. */
-  label: string;
-  count?: number;
-  suffix?: string;
-  text?: string;
-};
-
 export type AboutChangeSectionProps = {
   pill: {text: string; avatar: {src: string; alt?: string}};
   heading: string;
   quotes: Quote[];
-  stats: Stat[];
   padding?: SectionPadding;
   className?: string;
 };
 
-/** What changes: two accounts, then the figures underneath. */
+/** What changes, in the words of people who have done the work. */
 export function AboutChangeSection({
   pill,
   heading,
   quotes,
-  stats,
   padding = 'none',
   className,
 }: AboutChangeSectionProps) {
@@ -46,30 +36,15 @@ export function AboutChangeSection({
 
         <ul className="mt-12 grid w-full gap-0.5 md:mt-14 md:grid-cols-2">
           {quotes.map((quote, index) => (
-            <Reveal key={quote.cite} as="li" order={index} className="bg-white px-8 py-10 md:px-11 md:py-12">
+            <Reveal
+              key={quote.cite}
+              as="li"
+              order={index}
+              className={`bg-white px-8 py-10 md:px-11 md:py-12${quotes.length === 1 ? ' md:col-span-2' : ''}`}
+            >
               <p className="text-mosaic text-pine lg:text-mosaic-lg">{quote.quote}</p>
               <p className="mt-6 text-support text-pine">{quote.body}</p>
               <p className="mt-8 text-detail text-pine/60 uppercase">{quote.cite}</p>
-            </Reveal>
-          ))}
-        </ul>
-
-        <ul className="mt-0.5 grid w-full grid-cols-2 gap-0.5 lg:grid-cols-4">
-          {stats.map((stat, index) => (
-            <Reveal
-              key={stat.label}
-              as="li"
-              order={index}
-              className="flex min-h-57.5 flex-col items-center justify-center bg-white px-4 py-8 text-center"
-            >
-              <p className="text-sources font-medium text-pine md:text-sources-md">
-                {stat.count !== undefined ? (
-                  <CountUp value={stat.count} suffix={stat.suffix} />
-                ) : (
-                  stat.text
-                )}
-              </p>
-              <p className="mt-2 max-w-48 text-detail text-pine/60 uppercase">{stat.label}</p>
             </Reveal>
           ))}
         </ul>
