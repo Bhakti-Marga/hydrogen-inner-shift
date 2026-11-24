@@ -1,5 +1,5 @@
 import {useEffect, useLayoutEffect, useRef, useState} from 'react';
-import {Reveal, Section, type SectionPadding} from '~/ui';
+import {Reveal, ScrollChevrons, Section, type SectionPadding} from '~/ui';
 
 type QuoteTone = 'ghost' | 'glass' | 'solid' | 'dim';
 
@@ -94,7 +94,8 @@ function applyTranslate(track: HTMLElement, y: number, animate: boolean) {
 /**
  * A hillside photograph with a heading and a looping reel of reviews.
  * The centred review is solid; neighbours fade toward the edges.
- * Drag the stack or click a card. The page scroll is left alone.
+ * Drag the stack, click a card, or use the chevrons. Touch is left to the
+ * page scroll, so phones step with the chevrons.
  */
 export function AboutQuotesSection({
   heading,
@@ -121,6 +122,9 @@ export function AboutQuotesSection({
     if (!frame || !track || !item) return;
     applyTranslate(track, centeredTranslate(frame, track, item), animate);
   };
+
+  /** Move one card from the middle copy; the clone recentres after the transition. */
+  const step = (delta: number) => focusSlot(count + activeRef.current + delta, true);
 
   useLayoutEffect(() => {
     const frame = frameRef.current;
@@ -297,6 +301,14 @@ export function AboutQuotesSection({
               )}
             </ul>
           </div>
+          <ScrollChevrons
+            rounded
+            onPrevious={() => step(-1)}
+            onNext={() => step(1)}
+            previousLabel="Previous review"
+            nextLabel="Next review"
+            className="justify-center lg:hidden"
+          />
         </div>
       </div>
     </Section>

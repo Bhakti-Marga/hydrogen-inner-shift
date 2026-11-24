@@ -382,6 +382,7 @@
   --radius-card: 10px; /* contact form card */
   --radius-field: 12px; /* form inputs and option cards */
   --radius-menu: 18px; /* mobile menu photo cards */
+  --radius-chevron: 10px; /* rounded carousel chevrons */
 
   /* =========================================
      Shadows

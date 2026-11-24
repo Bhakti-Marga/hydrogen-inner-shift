@@ -24,8 +24,8 @@ const POSTER = '/images/pages/home/hero-founders.jpg';
 const TESTIMONIALS = [
   {name: 'Yash Pankhania', role: 'Tech sales, London', slug: 'josh'},
   {
-    name: 'Shraddha Lallbahdoor',
-    role: 'Adviser to senior leadership, Luxembourg',
+    name: 'Shraddha Oril',
+    role: 'Expert Accountant, Luxembourg',
     slug: 'shweta',
   },
   {name: 'Gosia Reis', role: 'Organisation development expert', slug: 'gosha'},
@@ -52,7 +52,7 @@ const FAQS = [
   {
     question: 'Where does it take place, and how long are we away?',
     answer:
-      'Immersions take place in nature at [location]. The full journey is three residential immersions within six months, with timing agreed with you, and follow-through for a year. Shorter formats run from 90 minutes to two days.',
+      'Immersions take place in nature, at locations we use across Europe, the UK, the US and Asia. The full journey is three residential immersions within six months, with timing agreed with you, and follow-through for a year. Shorter formats run from 90 minutes to two days.',
   },
   {
     question: 'Can it be done indoors?',
@@ -62,17 +62,12 @@ const FAQS = [
   {
     question: 'Do I need to be fit or outdoorsy?',
     answer:
-      '[Add the level of walking and time outdoors, and how you adapt for different needs.]',
+      'Nature is the container where the most effective work happens. We assess the fitness of every participant beforehand.',
   },
   {
     question: 'Is what I share kept confidential?',
     answer:
-      'Yes. Everything shared in the group is held in confidence. [Add what, if anything, you share with a sponsoring organisation, for example overall themes but never individual content.]',
-  },
-  {
-    question: 'What does it cost?',
-    answer:
-      'Every journey is shaped around you, so we discuss investment once we have spoken and understand what you need.',
+      'Yes. Everything shared in the group is held in confidence. We only share a participant’s experience with their signed permission.',
   },
   {
     question: 'How do you measure results?',

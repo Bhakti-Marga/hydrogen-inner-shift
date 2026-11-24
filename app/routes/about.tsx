@@ -175,8 +175,20 @@ export default function About() {
           {
             id: 'yash-pankhania',
             quote:
-              'The quality of the facilitation and delivery was incredible. Each module was thoughtfully structured, taking us on a journey rather than simply delivering information. Ratna constantly engaged us, asked questions and encouraged us to reflect, so we always felt involved rather than spoken at.',
+              'The quality of the facilitation and delivery was incredible. Each module was thoughtfully structured, taking us on a journey rather than simply delivering information. Avish constantly engaged us, asked questions and encouraged us to reflect, so we always felt involved rather than being spoken at.',
             cite: 'Yash Pankhania, Sales Specialist, IBM, United Kingdom',
+          },
+          {
+            id: 'hitesh-jogia',
+            quote:
+              'Avish was incredibly supportive throughout the transformation process and created a safe and encouraging space for meaningful conversations.',
+            cite: 'Hitesh Jogia, Senior Chartered Financial Planner, United Kingdom',
+          },
+          {
+            id: 'shraddha-oril',
+            quote:
+              'A special thank you to Avish for creating such a safe, warm and genuine space throughout the programme. I truly appreciated the support, the openness and the way he guided us through the experience — a meaningful and transformative journey.',
+            cite: 'Shraddha Oril, Expert Accountant, Luxembourg',
           },
         ]}
       />

@@ -73,10 +73,10 @@ const TESTIMONIALS = [
   },
   {
     slug: 'shweta',
-    name: 'Shraddha Lallbahdoor',
+    name: 'Shraddha Oril',
     quote:
       '“I thought I could do everything on my own. The group changes everything.”',
-    attribution: 'Shraddha Lallbahdoor · Adviser to senior leadership, Luxembourg',
+    attribution: 'Shraddha Oril · Expert Accountant, Luxembourg',
     duration: '0:56',
   },
 ];

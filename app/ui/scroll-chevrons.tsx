@@ -7,6 +7,8 @@ type ScrollChevronsProps = {
   nextLabel?: string;
   /** `light`: white square, ink chevron. `ember`: ember square, white chevron. */
   tone?: 'light' | 'ember';
+  /** Softens the square corners. */
+  rounded?: boolean;
   className?: string;
 };
 
@@ -24,21 +26,23 @@ export function ScrollChevrons({
   previousLabel = 'Previous',
   nextLabel = 'Next',
   tone = 'light',
+  rounded = false,
   className = '',
 }: ScrollChevronsProps) {
+  const toneClass = `${toneClasses[tone]}${rounded ? ' rounded-chevron' : ''}`;
   return (
     <div className={`flex items-center gap-1.25 ${className}`}>
       <ChevronButton
         label={previousLabel}
         disabled={!canPrevious}
         onClick={onPrevious}
-        toneClass={toneClasses[tone]}
+        toneClass={toneClass}
       />
       <ChevronButton
         label={nextLabel}
         disabled={!canNext}
         onClick={onNext}
-        toneClass={toneClasses[tone]}
+        toneClass={toneClass}
         flip
       />
     </div>
