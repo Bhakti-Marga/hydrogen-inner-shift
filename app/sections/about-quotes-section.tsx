@@ -95,7 +95,8 @@ function applyTranslate(track: HTMLElement, y: number, animate: boolean) {
  * A hillside photograph with a heading and a looping reel of reviews.
  * The centred review is solid; neighbours fade toward the edges.
  * Drag the stack, click a card, or use the chevrons. Touch is left to the
- * page scroll, so phones step with the chevrons.
+ * page scroll, so phones step with the up / down chevrons in the top corner.
+ * The reel fades out at its top and bottom edges.
  */
 export function AboutQuotesSection({
   heading,
@@ -256,7 +257,7 @@ export function AboutQuotesSection({
           className="absolute inset-0 size-full object-cover"
         />
         <div className="relative grid gap-8 px-5 py-10 md:px-10 lg:min-h-200 lg:grid-cols-[20rem_minmax(0,29rem)_1fr] lg:items-start lg:gap-x-24 lg:px-20 lg:py-0">
-          <Reveal>
+          <Reveal className="pr-14 lg:pr-0">
             <h2 className="max-w-80 text-statement font-normal text-white lg:mt-20 lg:max-w-none lg:text-statement-md">
               {heading}
             </h2>
@@ -266,7 +267,7 @@ export function AboutQuotesSection({
             role="region"
             aria-roledescription="carousel"
             aria-label="Reviews"
-            className="h-128 min-h-0 min-w-0 touch-pan-y cursor-grab select-none overflow-hidden lg:h-200"
+            className="h-128 min-h-0 min-w-0 touch-pan-y cursor-grab select-none overflow-hidden mask-y-from-85% lg:h-200"
           >
             {current ? (
               <p className="sr-only" aria-live="polite">
@@ -303,11 +304,12 @@ export function AboutQuotesSection({
           </div>
           <ScrollChevrons
             rounded
+            vertical
             onPrevious={() => step(-1)}
             onNext={() => step(1)}
             previousLabel="Previous review"
             nextLabel="Next review"
-            className="justify-center lg:hidden"
+            className="absolute top-10 right-5 md:right-10 lg:hidden"
           />
         </div>
       </div>

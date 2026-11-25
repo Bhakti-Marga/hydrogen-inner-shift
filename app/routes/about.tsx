@@ -80,13 +80,6 @@ export default function About() {
               width: 400,
               height: 600,
             },
-            photo: {
-              src: '/images/pages/about/ratna.jpg',
-              alt: 'Ratna Morjaria in a navy outfit, smiling',
-              width: 853,
-              height: 1280,
-              objectPosition: 'center 28%',
-            },
             name: 'Ratna Morjaria',
             labels: ['Co-founder', 'Transformation & leadership consultant'],
             links: [
@@ -114,13 +107,6 @@ export default function About() {
               width: 400,
               height: 600,
               objectPosition: 'center 22%',
-            },
-            photo: {
-              src: '/images/pages/about/avish.jpg',
-              alt: 'Avish Lallbahadoor sitting on steps, looking aside',
-              width: 1400,
-              height: 1400,
-              objectPosition: '62% 22%',
             },
             name: 'Avish Lallbahadoor',
             labels: [

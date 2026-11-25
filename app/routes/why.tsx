@@ -170,7 +170,7 @@ export default function Why() {
           avatar: AVATAR,
         }}
         heading={'The fastest way to see where that lever sits\nin your own team is a conversation, not another framework.'}
-        cta={{label: 'Book a free 30min Discovery Call →', href: CONTACT_FORM_HREF}}
+        cta={{label: 'Book a free 90 min Discovery Call →', href: CONTACT_FORM_HREF}}
         image={{src: '/images/pages/why/close.jpg', width: 2880, height: 1400}}
       />
       <SiteFooterSection

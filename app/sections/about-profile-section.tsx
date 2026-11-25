@@ -16,7 +16,6 @@ type FounderLink = {
 
 type FounderProfile = {
   portrait: Photo;
-  photo: Photo;
   name: string;
   /** Uppercase lines under the name. */
   labels: string[];
@@ -31,11 +30,7 @@ export type AboutProfileSectionProps = {
   className?: string;
 };
 
-/**
- * Two founder columns. On large screens each rests on a photograph; hover or
- * keyboard focus fades that photograph away to show the biography. Below that,
- * the biography is open and the cover photograph is omitted.
- */
+/** Two founder columns, each with its biography always open. */
 export function AboutProfileSection({
   people,
   padding = 'none',
@@ -57,27 +52,10 @@ function FounderCard({person, order}: {person: FounderProfile; order: number}) {
     <Reveal
       as="article"
       order={order}
-      tabIndex={0}
-      onMouseDown={(event) => {
-        if (window.matchMedia('(hover: hover)').matches) event.preventDefault();
-      }}
-      className="group/profile relative flex min-h-80 flex-col overflow-hidden focus-visible:ring-2 focus-visible:ring-pine focus-visible:ring-inset lg:min-h-166"
+      className="flex min-h-80 flex-col lg:min-h-166"
     >
-      <img
-        src={person.photo.src}
-        alt={person.photo.alt}
-        width={person.photo.width}
-        height={person.photo.height}
-        loading="lazy"
-        style={
-          person.photo.objectPosition
-            ? {objectPosition: person.photo.objectPosition}
-            : undefined
-        }
-        className="hidden object-cover motion-reduce:transition-none lg:absolute lg:inset-0 lg:z-10 lg:block lg:h-full lg:w-full lg:transition-opacity lg:duration-[var(--duration-reveal)] lg:ease-out-soft lg:[--tw-duration:var(--duration-reveal)] lg:[--tw-ease:var(--ease-out-soft)] lg:group-focus-within/profile:pointer-events-none lg:group-focus-within/profile:opacity-0 lg:group-focus-visible/profile:opacity-0 lg:group-hover/profile:pointer-events-none lg:group-hover/profile:opacity-0 motion-safe:group-data-[state=run]/reveal:animate-settle"
-      />
       <div className="flex flex-1 flex-col bg-cloud px-8 py-10 md:px-10">
-        <div className="flex flex-1 flex-col motion-reduce:transition-none lg:translate-y-3 lg:transition-transform lg:duration-[var(--duration-reveal)] lg:ease-out-soft lg:[--tw-duration:var(--duration-reveal)] lg:[--tw-ease:var(--ease-out-soft)] lg:group-focus-within/profile:translate-y-0 lg:group-focus-visible/profile:translate-y-0 lg:group-hover/profile:translate-y-0">
+        <div className="flex flex-1 flex-col">
           <img
             src={person.portrait.src}
             alt=""

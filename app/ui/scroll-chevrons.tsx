@@ -9,12 +9,22 @@ type ScrollChevronsProps = {
   tone?: 'light' | 'ember';
   /** Softens the square corners. */
   rounded?: boolean;
+  /** Stacks the buttons with up / down chevrons, for vertical reels. */
+  vertical?: boolean;
   className?: string;
 };
 
 const toneClasses = {
   light: 'bg-white text-abyss focus-visible:outline-white',
   ember: 'bg-ember text-white focus-visible:outline-ember',
+};
+
+/** The drawn chevron points left; these turn it to face each way. */
+const chevronTurn = {
+  left: undefined,
+  right: '-scale-x-100',
+  up: 'rotate-90',
+  down: '-rotate-90',
 };
 
 /** Square 40px previous / next buttons for carousels and horizontal scrollers. */
@@ -27,23 +37,25 @@ export function ScrollChevrons({
   nextLabel = 'Next',
   tone = 'light',
   rounded = false,
+  vertical = false,
   className = '',
 }: ScrollChevronsProps) {
   const toneClass = `${toneClasses[tone]}${rounded ? ' rounded-chevron' : ''}`;
   return (
-    <div className={`flex items-center gap-1.25 ${className}`}>
+    <div className={`flex items-center gap-1.25${vertical ? ' flex-col' : ''} ${className}`}>
       <ChevronButton
         label={previousLabel}
         disabled={!canPrevious}
         onClick={onPrevious}
         toneClass={toneClass}
+        direction={vertical ? 'up' : 'left'}
       />
       <ChevronButton
         label={nextLabel}
         disabled={!canNext}
         onClick={onNext}
         toneClass={toneClass}
-        flip
+        direction={vertical ? 'down' : 'right'}
       />
     </div>
   );
@@ -54,13 +66,13 @@ function ChevronButton({
   disabled,
   onClick,
   toneClass,
-  flip = false,
+  direction,
 }: {
   label: string;
   disabled: boolean;
   onClick: () => void;
   toneClass: string;
-  flip?: boolean;
+  direction: keyof typeof chevronTurn;
 }) {
   return (
     <button
@@ -76,7 +88,7 @@ function ChevronButton({
         height="40"
         viewBox="0 0 40 40"
         fill="none"
-        className={flip ? '-scale-x-100' : undefined}
+        className={chevronTurn[direction]}
       >
         <path
           d="M23.5552 12.8894L16.4448 20.0002L23.5552 27.1106"
