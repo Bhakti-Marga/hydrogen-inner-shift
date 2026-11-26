@@ -15,6 +15,8 @@ import {HomeStatementSection} from '~/sections/home-statement-section';
 import {HomeStatsSection} from '~/sections/home-stats-section';
 import {HomeTestimonialsSection} from '~/sections/home-testimonials-section';
 import {SiteFooterSection} from '~/sections/site-footer-section';
+import {RATNA_AVATAR, AVISH_AVATAR} from '~/lib/founder-avatars';
+
 const TITLE = 'Inner Shift — Shaping the future of work from the inside out';
 const DESCRIPTION =
   'Help leaders and teams unlock their full potential by working on the human gap that skills training never reaches.';
@@ -37,8 +39,6 @@ const TESTIMONIALS = [
   },
   {name: 'Tommaso Caini', role: 'Startup co-founder, Italy', slug: 'tommaso'},
 ];
-
-const PILL_AVATAR = {src: '/images/pages/home/hero-pill-avatar.jpg'};
 
 const FOUNDERS_FILM = {
   src: '/videos/home/founders.mp4',
@@ -164,7 +164,7 @@ export default function Homepage() {
       <HomeHeroSection
         pill={{
           text: 'For aspiring executives, founders and leadership teams',
-          avatar: PILL_AVATAR,
+          avatar: RATNA_AVATAR,
         }}
         headline="Shaping the future of work from the inside out"
         intro={{
@@ -220,7 +220,7 @@ export default function Homepage() {
       <HomeStatsSection
         pill={{
           text: 'Did you know the cost of staying at the surface?',
-          avatar: PILL_AVATAR,
+          avatar: AVISH_AVATAR,
         }}
         stats={[
           {
@@ -349,7 +349,7 @@ export default function Homepage() {
         }}
       />
       <HomeNatureSection
-        pill={{text: 'Why nature?', avatar: PILL_AVATAR}}
+        pill={{text: 'Why nature?', avatar: RATNA_AVATAR}}
         statement={{
           lead: 'Habits live in familiar places. Nature breaks them.',
           text: 'In the office, everyone plays their role. Out here, the roles fall away, and the conversations you’ve been avoiding finally happen.',
@@ -379,14 +379,14 @@ export default function Homepage() {
       <HomeFaqSection
         pill={{
           text: 'We’re here to answer your questions',
-          avatar: PILL_AVATAR,
+          avatar: AVISH_AVATAR,
         }}
         heading="What people ask before the first call"
         faqs={FAQS}
       />
       <HomeCtaSection
         id="contact"
-        pill={{text: 'Ready when you are', avatar: PILL_AVATAR}}
+        pill={{text: 'Ready when you are', avatar: RATNA_AVATAR}}
         heading="The shift starts with just one conversation."
         primary={{label: 'Let’s talk', href: CONTACT_FORM_HREF}}
         secondary={{label: 'Explore the programs', href: '/programs'}}

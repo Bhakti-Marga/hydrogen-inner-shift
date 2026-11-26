@@ -8,6 +8,8 @@ import {ResultsCloseSection} from '~/sections/results-close-section';
 import {ResultsHeroSection} from '~/sections/results-hero-section';
 import {ResultsTestimonialsSection} from '~/sections/results-testimonials-section';
 import {SiteFooterSection} from '~/sections/site-footer-section';
+import {RATNA_AVATAR, AVISH_AVATAR} from '~/lib/founder-avatars';
+
 const TITLE = 'Results — Inner Shift';
 const DESCRIPTION =
   'Leaders say what changed, in their own words. Every clip was filmed on the final day of the journey.';
@@ -28,8 +30,6 @@ const FOUNDERS_FILM = {
     srcLang: 'en',
   },
 };
-
-const PILL_AVATAR = {src: '/images/pages/home/hero-pill-avatar.jpg'};
 
 const TESTIMONIALS = [
   {
@@ -99,7 +99,7 @@ export default function Results() {
       <ResultsHeroSection
         pill={{
           text: 'Don’t take our word for it. Take theirs!',
-          avatar: PILL_AVATAR,
+          avatar: AVISH_AVATAR,
         }}
         headline={'What changes, in their\nown words.'}
         primaryCta={{
@@ -135,7 +135,7 @@ export default function Results() {
       <ResultsCloseSection
         pill={{
           text: 'How do we work?',
-          avatar: {src: '/images/pages/about/hero-ratna.jpg', alt: 'Ratna Morjaria'},
+          avatar: RATNA_AVATAR,
         }}
         heading={'The best way to understand what\nwe do is to experience a piece of it.'}
         primary={{label: 'Let’s talk', href: CONTACT_FORM_HREF}}

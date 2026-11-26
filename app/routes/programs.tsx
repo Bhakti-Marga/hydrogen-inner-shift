@@ -13,6 +13,8 @@ import {ProgramsJourneySection} from '~/sections/programs-journey-section';
 import {ProgramsPairSection} from '~/sections/programs-pair-section';
 import {ProgramsTasterSection} from '~/sections/programs-taster-section';
 import {SiteFooterSection} from '~/sections/site-footer-section';
+import {RATNA_AVATAR, AVISH_AVATAR} from '~/lib/founder-avatars';
+
 const TITLE = 'Programs — Inner Shift';
 const DESCRIPTION =
   'Leadership programs for teams: a first taste of the work, or a full journey through the beliefs, values and identity that shape how they lead.';
@@ -37,7 +39,7 @@ export default function Programs() {
       <ProgramsHeroSection
         pill={{
           text: 'Ready for the Full program?',
-          avatar: {src: '/images/pages/home/hero-pill-avatar.jpg'},
+          avatar: AVISH_AVATAR,
         }}
         headline="Three immersions. One team. Paced around you."
         intro="We take your leadership team into nature three times within six months, four days at a time. In between, we hold the thread, and afterwards, we stay with you for a year."
@@ -175,7 +177,7 @@ export default function Programs() {
       <ProgramsDaySection
         pill={{
           text: 'An example day',
-          avatar: {src: '/images/pages/home/hero-pill-avatar.jpg'},
+          avatar: RATNA_AVATAR,
         }}
         heading={'What a single day inside an\nimmersion looks like'}
         slots={[
@@ -220,7 +222,7 @@ export default function Programs() {
       <ProgramsBeliefSection
         pill={{
           text: 'We believe that...',
-          avatar: {src: '/images/pages/home/hero-pill-avatar.jpg'},
+          avatar: AVISH_AVATAR,
         }}
         lead="When a leader speaks from the heart, everything changes."
         text="Not because of what they say, but because of the presence they hold."
@@ -273,13 +275,13 @@ export default function Programs() {
         id="day"
         pill={{
           text: 'Need more time?',
-          avatar: {src: '/images/pages/home/hero-pill-avatar.jpg'},
+          avatar: RATNA_AVATAR,
         }}
         title="Try One Day Immersion,"
         titleRest="to get the taste of it."
         text="A single day in nature, shaped around your team's real material — a walk in silence, circle work, solo time, and a shared table at the end. You leave with a felt sense of how your team actually talks, and an honest read on whether the full journey is right for you."
         facts={['1 full day · in nature', '6–12 leaders', 'No further commitment']}
-        note="Commitment: six months → one day."
+        note="Commitment: one day."
         cta={{label: 'Plan a taster day', href: CONTACT_FORM_HREF}}
         image={{
           src: '/images/pages/programs/taster-day.jpg',
@@ -291,7 +293,7 @@ export default function Programs() {
       <ProgramsCloseSection
         pill={{
           text: 'Ready when you are',
-          avatar: {src: '/images/pages/home/hero-pill-avatar.jpg'},
+          avatar: AVISH_AVATAR,
         }}
         heading={'You’ve felt the shape of it.\nThe rest is one conversation.'}
         primary={{label: 'Let’s talk', href: CONTACT_FORM_HREF}}

@@ -1,6 +1,7 @@
 import type {Route} from './+types/confirmation';
 import {shareImageMeta} from '~/lib/share-image';
 import {ConfirmationSection} from '~/sections/confirmation-section';
+import {RATNA_AVATAR} from '~/lib/founder-avatars';
 
 const TITLE = 'Your request is in — Inner Shift';
 
@@ -22,7 +23,7 @@ export default function Confirmation() {
       <ConfirmationSection
         pill={{
           text: 'Thank you!',
-          avatar: {src: '/images/pages/confirmation/avatar.jpg'},
+          avatar: RATNA_AVATAR,
         }}
         headline="Your request is in"
         intro="We will reply within two working days."

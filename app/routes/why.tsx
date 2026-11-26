@@ -11,8 +11,7 @@ import {WhyLeverSection} from '~/sections/why-lever-section';
 import {WhyProofSection} from '~/sections/why-proof-section';
 import {WhyStopsSection} from '~/sections/why-stops-section';
 import {WhyUnderneathSection} from '~/sections/why-underneath-section';
-
-const AVATAR = {src: '/images/pages/home/hero-pill-avatar.jpg'};
+import {RATNA_AVATAR, AVISH_AVATAR} from '~/lib/founder-avatars';
 
 const TITLE = 'Why — Inner Shift';
 const DESCRIPTION =
@@ -81,12 +80,12 @@ export default function Why() {
         ]}
       />
       <WhyStopsSection
-        pill={{text: 'Where it stops?', avatar: AVATAR}}
+        pill={{text: 'Where it stops?', avatar: RATNA_AVATAR}}
         lead="Most leadership development stops at what's visible."
         text="New frameworks, new habits, new language. It works for a few weeks. Then the old pattern comes back, because nothing underneath ever moved."
       />
       <WhyUnderneathSection
-        pill={{text: 'What we work on instead...', avatar: AVATAR}}
+        pill={{text: 'What we work on instead...', avatar: AVISH_AVATAR}}
         heading="We work at what's underneath."
         text="The beliefs, the blind spots, the identity a leader has built their career around. Change that, and the change holds, not just in the room, but in how someone leads for years afterward. That shows up as retention, as how a team performs under pressure, as results, not just a better conversation in a workshop."
         image={{
@@ -97,7 +96,7 @@ export default function Why() {
         }}
       />
       <WhyProofSection
-        pill={{text: 'We have the proof', avatar: AVATAR}}
+        pill={{text: 'We have the proof', avatar: RATNA_AVATAR}}
         heading="This is fixable. The best-led organisations already prove it."
         text="That's not luck. It's proof this is fixable: a gap between where most teams sit and where they could, not a ceiling."
         typical={{
@@ -167,7 +166,7 @@ export default function Why() {
       <WhyCloseSection
         pill={{
           text: "Let's take a look at where your team's own gap sits...",
-          avatar: AVATAR,
+          avatar: AVISH_AVATAR,
         }}
         heading={'The fastest way to see where that lever sits\nin your own team is a conversation, not another framework.'}
         cta={{label: 'Book a free 90 min Discovery Call →', href: CONTACT_FORM_HREF}}

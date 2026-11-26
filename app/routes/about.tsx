@@ -11,12 +11,13 @@ import {AboutProfileSection} from '~/sections/about-profile-section';
 import {AboutQuotesSection} from '~/sections/about-quotes-section';
 import {AboutTogetherSection} from '~/sections/about-together-section';
 import {SiteFooterSection} from '~/sections/site-footer-section';
+import {RATNA_AVATAR, AVISH_AVATAR} from '~/lib/founder-avatars';
+
 const TITLE = 'About us — Inner Shift';
 const DESCRIPTION =
   'Meet the two founders who built Inner Shift for the part of leadership you cannot see from the outside.';
 
 const HERO = '/images/pages/about/hero.jpg';
-const AVATAR = {src: '/images/pages/about/hero-ratna.jpg'};
 
 const FOUNDERS_FILM = {
   src: '/videos/home/founders-film.mp4',
@@ -179,7 +180,7 @@ export default function About() {
         ]}
       />
       <AboutTogetherSection
-        pill={{text: 'How we work together?', avatar: AVATAR}}
+        pill={{text: 'How we work together?', avatar: AVISH_AVATAR}}
         heading="Neither of us runs this alone"
         steps={[
           {
@@ -215,7 +216,7 @@ export default function About() {
         ]}
       />
       <AboutChangeSection
-        pill={{text: 'What changes when we do this?', avatar: AVATAR}}
+        pill={{text: 'What changes when we do this?', avatar: RATNA_AVATAR}}
         heading="Frameworks are easy to claim. What actually changes when a team does this work — that's harder to fake, and easier to see."
         quotes={[
           {
@@ -227,7 +228,7 @@ export default function About() {
         ]}
       />
       <AboutCloseSection
-        pill={{text: 'Come see how we work', avatar: AVATAR}}
+        pill={{text: 'Come see how we work', avatar: AVISH_AVATAR}}
         heading={'The best way to understand what\nwe do is to experience a piece of it.'}
         cta={{label: 'Book a free consultation →', href: CONTACT_FORM_HREF}}
         filmLabel="or Watch a film to learn more"

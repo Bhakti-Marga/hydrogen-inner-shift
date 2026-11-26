@@ -11,6 +11,8 @@ import {MissionSourcesSection} from '~/sections/mission-sources-section';
 import {MissionStatementSection} from '~/sections/mission-statement-section';
 import {MissionTeamSection} from '~/sections/mission-team-section';
 import {SiteFooterSection} from '~/sections/site-footer-section';
+import {RATNA_AVATAR, AVISH_AVATAR} from '~/lib/founder-avatars';
+
 const TITLE = 'Mission — Inner Shift';
 const DESCRIPTION =
   'We work on the source of how people lead: who they are being, and how they understand themselves and each other.';
@@ -59,7 +61,7 @@ export default function Mission() {
       <MissionSourcesSection
         pill={{
           text: 'What we draw on?',
-          avatar: {src: '/images/pages/mission/statement-avatar.jpg'},
+          avatar: RATNA_AVATAR,
         }}
         heading={'Modern science and\ntimeless wisdom,\ntranslated into\npractical application\nat work.'}
         intro="Seven sources, one discipline: everything we use has to survive contact with a real leadership team."
@@ -105,7 +107,7 @@ export default function Mission() {
       <MissionTeamSection
         pill={{
           text: 'Meet the team',
-          avatar: {src: '/images/pages/mission/statement-avatar.jpg'},
+          avatar: AVISH_AVATAR,
         }}
         heading="People who walk it with you"
         people={[
@@ -167,7 +169,7 @@ export default function Mission() {
       <MissionCloseSection
         pill={{
           text: 'Ready when you are',
-          avatar: {src: '/images/pages/mission/statement-avatar.jpg'},
+          avatar: RATNA_AVATAR,
         }}
         heading="Who could your leaders become?"
         cta={{label: 'Let’s talk', href: CONTACT_FORM_HREF}}
