@@ -111,7 +111,7 @@ export default function About() {
             },
             name: 'Avish Lallbahadoor',
             labels: [
-              'Founder',
+              'Co-founder',
               'Leadership transformation',
               'Nature-based development',
             ],
